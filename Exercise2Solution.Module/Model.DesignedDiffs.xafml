@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application Title="Exercise2Solution">
+  <BOModel>
+    <Class Name="Exercise2Solution.Module.BusinessObjects.Meals">
+      <OwnMembers>
+        <Member Name="Price" EditMaskType="RegEx" EditMask="[0-9]*\.[0-9][0-9]" DisplayFormat="{0:C}" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Exercise2Solution.Module.BusinessObjects.OrderLines">
+      <OwnMembers>
+        <Member Name="UnitPrice" PropertyEditorType="DevExpress.ExpressApp.Web.Editors.ASPx.ASPxDecimalPropertyEditor" DataSourceCriteria="" EditMaskType="RegEx" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Exercise2Solution.Module.BusinessObjects.Orders">
+      <OwnMembers>
+        <Member Name="CreatedBy" AllowEdit="False" />
+        <Member Name="TotalExclVat" EditMaskType="RegEx" EditMask="[0-9]*\.[0-9][0-9]" AllowEdit="False" />
+        <Member Name="TotalOrder" EditMaskType="RegEx" EditMask="[0-9]*\.[0-9][0-9]" />
+        <Member Name="TotalVat" EditMaskType="RegEx" EditMask="[0-9]*\.[0-9][0-9]" AllowEdit="False" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Exercise2Solution.Module.BusinessObjects.Telephone">
+      <OwnMembers>
+        <Member Name="TelephoneNumber" EditMask="(00)00-000-0000" DisplayFormat="" EditMaskType="Simple" DataSourceCriteria="" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
+  <NavigationItems StartupNavigationItem="Profile_ListView">
+    <Items>
+      <Item Id="Default">
+        <Items>
+          <Item Id="OrderLines_ListView" Visible="False" />
+          <Item Id="Telephone_ListView" Visible="False" />
+        </Items>
+      </Item>
+    </Items>
+  </NavigationItems>
+  <Options>
+    <LayoutManagerOptions RequiredFieldMark="*" />
+  </Options>
+  <SchemaModules>
+    <SchemaModule Name="SystemAspNetModule" Version="16.2.7.0" IsNewNode="True" />
+    <SchemaModule Name="SystemModule" Version="16.2.7.0" IsNewNode="True" />
+  </SchemaModules>
+  <Validation>
+    <Rules>
+      <RuleRequiredField Id="DevExpress.Persistent.Validation.RuleRequiredField_Exercise2Solution.Module.BusinessObjects.Profile_BuildingNumber" TargetCriteria="[BuildingNumber] &gt;= 1 And [BuildingNumber] &lt;= 5" TargetCollectionOwnerType="Exercise2Solution.Module.BusinessObjects.Profile" CustomMessageTemplate="1" />
+    </Rules>
+  </Validation>
+  <Views>
+    <DetailView Id="Department_DetailView" AllowEdit="True" />
+    <ListView Id="Department_ListView" AllowEdit="False" AllowLink="False" AllowUnlink="False" MasterDetailMode="ListViewOnly" />
+    <ListView Id="Department_LookupListView" AllowEdit="False" AllowLink="False" AllowNew="True" AllowUnlink="False" />
+    <ListView Id="Meals_ListView" AllowLink="False" AllowUnlink="False" />
+    <ListView Id="Meals_LookupListView" AllowUnlink="False" AllowLink="False" />
+    <ListView Id="OrderLines_ListView" AllowLink="False" AllowUnlink="False">
+      <Columns>
+        <ColumnInfo Id="Order" View="" AllowEdit="False" AllowClear="False" />
+      </Columns>
+    </ListView>
+    <ListView Id="OrderLines_LookupListView" AllowLink="False" AllowUnlink="False" />
+    <ListView Id="Orders_ListView" AllowLink="False" AllowUnlink="False">
+      <Columns>
+        <ColumnInfo Id="Delivery" SortOrder="Descending" />
+      </Columns>
+      <Filters>
+        <Filter Id="Orders_ListView_AllOrders" Caption="All Orders" IsNewNode="True" />
+        <Filter Id="Orders_ListView_Delivered" Criteria="Status = 'Delivered'" Caption="Delivered" IsNewNode="True" />
+        <Filter Id="Orders_ListView_OnOrder" Criteria="Status = 'OnOrder'" Caption="On Order" IsNewNode="True" />
+        <Filter Id="Orders_ListView_Processed" Criteria="Status = 'Processed'" Caption="Processed" IsNewNode="True" />
+      </Filters>
+    </ListView>
+    <ListView Id="Orders_LookupListView" AllowLink="False" AllowUnlink="False" />
+    <ListView Id="Orders_OrderLine_ListView" AllowUnlink="False" AllowLink="False" />
+    <DetailView Id="Profile_DetailView">
+      <Items>
+        <PropertyEditor Id="BuildingNumber" DataSourceCriteria="" DisplayFormat="{0:N0}" ImmediatePostData="False" LookupEditorMode="Auto" />
+        <PropertyEditor Id="EmailAddress" EditMask="[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}" EditMaskType="RegEx" />
+      </Items>
+    </DetailView>
+    <ListView Id="Profile_ListView" AllowLink="False" AllowUnlink="False">
+      <Columns>
+        <ColumnInfo Id="Manager" Caption="Manager" DataSourceProperty="Department.Manager" PropertyName="Department.Manager" AllowEdit="False" IsNewNode="True" />
+      </Columns>
+    </ListView>
+    <ListView Id="Profile_LookupListView" AllowUnlink="False" AllowLink="False" />
+    <ListView Id="Profile_TelephoneNumbers_ListView" AllowLink="False" AllowUnlink="False" />
+    <ListView Id="Telephone_ListView" AllowLink="False" AllowUnlink="False" />
+    <ListView Id="Telephone_LookupListView" AllowLink="False" AllowUnlink="False" />
+  </Views>
+</Application>

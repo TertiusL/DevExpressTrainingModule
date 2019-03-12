@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <BOModel>
+    <Class Name="Exercise2Solution.Module.BusinessObjects.Telephone">
+      <OwnMembers>
+        <Member Name="TelephoneNumber" EditMask="(00)00-000-0000" DataSourceCriteria="" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
+  <NavigationItems ShowImages="True" />
+  <Options CollectionsEditMode="Edit" />
+  <SchemaModules>
+    <SchemaModule Name="SystemAspNetModule" Version="16.2.7.0" IsNewNode="True" />
+    <SchemaModule Name="SystemModule" Version="16.2.7.0" IsNewNode="True" />
+  </SchemaModules>
+</Application>

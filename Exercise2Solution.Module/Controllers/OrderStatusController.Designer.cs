@@ -1,0 +1,54 @@
+﻿namespace Exercise2Solution.Module.Controllers
+{
+    partial class OrderStatusController
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary> 
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Component Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.components = new System.ComponentModel.Container();
+            this.OrderStatusAction = new DevExpress.ExpressApp.Actions.SingleChoiceAction(this.components);
+            // 
+            // OrderStatusAction
+            // 
+            this.OrderStatusAction.Caption = "Order Status";
+            this.OrderStatusAction.ConfirmationMessage = null;
+            this.OrderStatusAction.Id = "OrderStatusAction";
+            this.OrderStatusAction.ToolTip = null;
+            this.OrderStatusAction.Execute += new DevExpress.ExpressApp.Actions.SingleChoiceActionExecuteEventHandler(this.OrderStatusAction_Execute);
+            // 
+            // OrderStatusController
+            // 
+            this.Actions.Add(this.OrderStatusAction);
+            this.TargetObjectType = typeof(Exercise2Solution.Module.BusinessObjects.Orders);
+            this.Activated += new System.EventHandler(this.OrderStatusController_Activated);
+
+        }
+
+        #endregion
+
+        private DevExpress.ExpressApp.Actions.SingleChoiceAction OrderStatusAction;
+    }
+}
