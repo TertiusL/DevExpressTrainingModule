@@ -4,12 +4,13 @@ using DevExpress.Persistent.Validation;
 using DevExpress.Xpo;
 using System;
 using System.Linq;
+using Exercise2Solution.Module.BusinessObjects;
 
 namespace Exercise2Solution.Module.BusinessObjects
 {
     [DefaultClassOptions, ImageName("OrderLine")]
     [System.ComponentModel.DefaultProperty("OrderItem")]
-    [RuleCriteria("RuleCriteria for Quantity", DefaultContexts.Save, "Quantity <= 10 && Quantity > 0")]
+    //[RuleCriteria("RuleCriteria for Quantity", DefaultContexts.Save, "Quantity <= 10 && Quantity > 0")]
     public class OrderLines : BaseObject
     {
         public OrderLines(Session session) : base(session) { }
@@ -23,31 +24,6 @@ namespace Exercise2Solution.Module.BusinessObjects
         private Meals orderItem;
         private int quantity;
         private decimal unitPrice;
-        //private decimal exclVat;
-        //private decimal inclVat;
-
-        //private void VatStuffs()
-        //{
-        //    if ((OrderItem.Vatable))
-        //    {
-        //        SetPropertyValue("InclVat", ref inclVat, (Quantity * UnitPrice) * (decimal)0.15); 
-        //    }
-        //    else
-        //    {
-        //        SetPropertyValue("ExclVat", ref exclVat, Quantity * UnitPrice); 
-        //    }
-        //}
-
-        //public decimal ExclVat
-        //{
-        //    get { return exclVat; }
-            
-        //}
-
-        //public decimal InclVat
-        //{
-        //    get { return inclVat; }
-        //}
 
         [ImmediatePostData]
         public Meals OrderItem
@@ -57,13 +33,13 @@ namespace Exercise2Solution.Module.BusinessObjects
             {
                 if(SetPropertyValue("OrderItem", ref orderItem, value) && !IsLoading && !IsSaving)
                 {
-                    unitPrice += OrderItem.Price;
+                    unitPrice = OrderItem.Price;
                     Quantity = 1;
                 }
             }
         }
 
-        [ImmediatePostData]
+        [ImmediatePostData, RuleRange(1, 10, CustomMessageTemplate = "Has to be between 1 and 10.")]
         public int Quantity
         {
             get { return quantity; }
@@ -76,10 +52,10 @@ namespace Exercise2Solution.Module.BusinessObjects
             }
         }
 
-        [ImmediatePostData]
         public decimal UnitPrice
         {
             get { return unitPrice; }
+            set { SetPropertyValue("UnitPrice", ref unitPrice, value); }
         }
 
         [PersistentAlias("Quantity * UnitPrice")]
@@ -105,10 +81,11 @@ namespace Exercise2Solution.Module.BusinessObjects
             set { SetPropertyValue("Order", ref _order, value); }
         }
 
-        protected override void OnSaved()
+        protected override void OnDeleting()
         {
-            base.OnSaved();
-            //VatStuffs();
+            var list = Order.OrderLine.Where(w => w.Oid != Oid).ToList();
+            Order.AddCalcTotal(list);
         }
+
     }
 }

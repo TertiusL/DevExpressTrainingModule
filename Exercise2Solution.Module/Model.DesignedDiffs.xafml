@@ -8,7 +8,7 @@
     </Class>
     <Class Name="Exercise2Solution.Module.BusinessObjects.OrderLines">
       <OwnMembers>
-        <Member Name="UnitPrice" PropertyEditorType="DevExpress.ExpressApp.Web.Editors.ASPx.ASPxDecimalPropertyEditor" DataSourceCriteria="" EditMaskType="RegEx" />
+        <Member Name="UnitPrice" PropertyEditorType="DevExpress.ExpressApp.Web.Editors.ASPx.ASPxDecimalPropertyEditor" DataSourceCriteria="" EditMaskType="RegEx" AllowEdit="False" />
       </OwnMembers>
     </Class>
     <Class Name="Exercise2Solution.Module.BusinessObjects.Orders">
@@ -58,7 +58,11 @@
         <ColumnInfo Id="Order" View="" AllowEdit="False" AllowClear="False" />
       </Columns>
     </ListView>
-    <ListView Id="OrderLines_LookupListView" AllowLink="False" AllowUnlink="False" />
+    <ListView Id="OrderLines_LookupListView" AllowLink="False" AllowUnlink="False">
+      <Columns>
+        <ColumnInfo Id="OrderItem.Description" ImmediatePostData="False" />
+      </Columns>
+    </ListView>
     <ListView Id="Orders_ListView" AllowLink="False" AllowUnlink="False">
       <Columns>
         <ColumnInfo Id="Delivery" SortOrder="Descending" />

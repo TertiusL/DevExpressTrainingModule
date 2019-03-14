@@ -2,8 +2,10 @@
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.BaseImpl.PermissionPolicy;
+using DevExpress.Persistent.Validation;
 using DevExpress.Xpo;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Exercise2Solution.Module.BusinessObjects
@@ -24,6 +26,7 @@ namespace Exercise2Solution.Module.BusinessObjects
         {
             base.AfterConstruction();
             createdBy = Session.GetObjectByKey<PermissionPolicyUser>(SecuritySystem.CurrentUserId);
+            
         }
 
         private DateTime order = DateTime.Now;
@@ -135,5 +138,24 @@ namespace Exercise2Solution.Module.BusinessObjects
                return GetCollection<OrderLines>("OrderLine");
             }         
         }
+
+        public void AddCalcTotal(List<OrderLines> orderList)
+        {
+            if (orderList == null)
+            {
+                orderList = OrderLine.ToList();
+            }
+
+            totalVat = orderList.Where(w => w.OrderItem.Vatable == true).Sum(s => (s.OrderItem.Price * s.Quantity))*(decimal)1.15;
+            totalExclVat = orderList.Where(w => w.OrderItem.Vatable == false).Sum(s => (s.OrderItem.Price * s.Quantity));
+
+        }
+
+        protected override void OnSaving()
+        {
+            AddCalcTotal(null);
+            base.OnSaving();
+        }
+        
     }
 }

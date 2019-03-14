@@ -16,7 +16,7 @@ namespace Exercise2Solution.Module.BusinessObjects
 
     [DefaultClassOptions, ImageName("Profile")]
     [System.ComponentModel.DefaultProperty("Surname")]
-    [RuleCriteria("RuleCriteria for BuildingNumber", DefaultContexts.Save, "BuildingNumber >= 1 && BuildingNumber <= 5")]
+    [RuleCriteria("RuleCriteria for BuildingNumber", DefaultContexts.Save, "BuildingNumber >= 1 && BuildingNumber <= 5", CustomMessageTemplate ="Building Number has to be between 1 and 5!")]
     public class Profile : BaseObject
     {
         public Profile(Session session) : base(session) { }
