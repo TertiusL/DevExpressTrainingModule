@@ -3,20 +3,21 @@
   <BOModel>
     <Class Name="Exercise2Solution.Module.BusinessObjects.Meals">
       <OwnMembers>
-        <Member Name="Price" EditMaskType="RegEx" EditMask="[0-9]*\.[0-9][0-9]" DisplayFormat="{0:C}" />
+        <Member Name="Price" EditMaskType="RegEx" EditMask="[0-9]*\.[0-9][0-9]" DisplayFormat="{0:C2}" PropertyEditorType="DevExpress.ExpressApp.Web.Editors.ASPx.ASPxDecimalPropertyEditor" />
       </OwnMembers>
     </Class>
     <Class Name="Exercise2Solution.Module.BusinessObjects.OrderLines">
       <OwnMembers>
-        <Member Name="UnitPrice" PropertyEditorType="DevExpress.ExpressApp.Web.Editors.ASPx.ASPxDecimalPropertyEditor" DataSourceCriteria="" EditMaskType="RegEx" AllowEdit="False" />
+        <Member Name="Amount" EditMask="" DisplayFormat="{0:C2}" PropertyEditorType="DevExpress.ExpressApp.Web.Editors.ASPx.ASPxObjectPropertyEditor" />
+        <Member Name="UnitPrice" PropertyEditorType="DevExpress.ExpressApp.Web.Editors.ASPx.ASPxObjectPropertyEditor" DataSourceCriteria="" EditMaskType="RegEx" AllowEdit="False" EditMask="" DisplayFormat="{0:C2}" />
       </OwnMembers>
     </Class>
     <Class Name="Exercise2Solution.Module.BusinessObjects.Orders">
       <OwnMembers>
         <Member Name="CreatedBy" AllowEdit="False" />
-        <Member Name="TotalExclVat" EditMaskType="RegEx" EditMask="[0-9]*\.[0-9][0-9]" AllowEdit="False" />
-        <Member Name="TotalOrder" EditMaskType="RegEx" EditMask="[0-9]*\.[0-9][0-9]" />
-        <Member Name="TotalVat" EditMaskType="RegEx" EditMask="[0-9]*\.[0-9][0-9]" AllowEdit="False" />
+        <Member Name="TotalExclVat" EditMaskType="RegEx" EditMask="" AllowEdit="False" DisplayFormat="{0:C}" PropertyEditorType="DevExpress.ExpressApp.Web.Editors.ASPx.ASPxObjectPropertyEditor" />
+        <Member Name="TotalOrder" EditMaskType="RegEx" EditMask="" DisplayFormat="{0:C}" PropertyEditorType="DevExpress.ExpressApp.Web.Editors.ASPx.ASPxObjectPropertyEditor" />
+        <Member Name="TotalVat" EditMaskType="RegEx" EditMask="" AllowEdit="False" DisplayFormat="{0:C}" PropertyEditorType="DevExpress.ExpressApp.Web.Editors.ASPx.ASPxObjectPropertyEditor" />
       </OwnMembers>
     </Class>
     <Class Name="Exercise2Solution.Module.BusinessObjects.Telephone">
@@ -51,11 +52,28 @@
     <DetailView Id="Department_DetailView" AllowEdit="True" />
     <ListView Id="Department_ListView" AllowEdit="False" AllowLink="False" AllowUnlink="False" MasterDetailMode="ListViewOnly" />
     <ListView Id="Department_LookupListView" AllowEdit="False" AllowLink="False" AllowNew="True" AllowUnlink="False" />
-    <ListView Id="Meals_ListView" AllowLink="False" AllowUnlink="False" />
+    <DetailView Id="Meals_DetailView">
+      <Items>
+        <PropertyEditor Id="Price" DisplayFormat="{0:C2}" />
+      </Items>
+    </DetailView>
+    <ListView Id="Meals_ListView" AllowLink="False" AllowUnlink="False">
+      <Columns>
+        <ColumnInfo Id="Price" DisplayFormat="{0:C2}" EditMask="[0-9]*\.[0-9][0-9]" />
+      </Columns>
+    </ListView>
     <ListView Id="Meals_LookupListView" AllowUnlink="False" AllowLink="False" />
+    <DetailView Id="OrderLines_DetailView">
+      <Items>
+        <PropertyEditor Id="Amount" DisplayFormat="{0:C}" EditMask="" />
+        <PropertyEditor Id="UnitPrice" DisplayFormat="{0:C}" EditMask="" />
+      </Items>
+    </DetailView>
     <ListView Id="OrderLines_ListView" AllowLink="False" AllowUnlink="False">
       <Columns>
-        <ColumnInfo Id="Order" View="" AllowEdit="False" AllowClear="False" />
+        <ColumnInfo Id="UnitPrice" DisplayFormat="{0:C}" EditMask="" />
+        <ColumnInfo Id="Amount" DisplayFormat="{0:C}" EditMask="" />
+        <ColumnInfo Id="Order" AllowEdit="False" AllowClear="False" View="" />
       </Columns>
     </ListView>
     <ListView Id="OrderLines_LookupListView" AllowLink="False" AllowUnlink="False">
@@ -63,9 +81,19 @@
         <ColumnInfo Id="OrderItem.Description" ImmediatePostData="False" />
       </Columns>
     </ListView>
+    <DetailView Id="Orders_DetailView">
+      <Items>
+        <PropertyEditor Id="TotalExclVat" DisplayFormat="{0:C}" EditMask="" EditMaskType="Simple" />
+        <PropertyEditor Id="TotalOrder" DisplayFormat="{0:C}" EditMask="" EditMaskType="Simple" />
+        <PropertyEditor Id="TotalVat" DisplayFormat="{0:C}" EditMask="" EditMaskType="Simple" />
+      </Items>
+    </DetailView>
     <ListView Id="Orders_ListView" AllowLink="False" AllowUnlink="False">
       <Columns>
         <ColumnInfo Id="Delivery" SortOrder="Descending" />
+        <ColumnInfo Id="TotalExclVat" DisplayFormat="{0:C}" EditMask="" EditMaskType="Simple" />
+        <ColumnInfo Id="TotalVat" DisplayFormat="{0:C}" EditMask="" EditMaskType="Simple" />
+        <ColumnInfo Id="TotalOrder" DisplayFormat="{0:C}" EditMask="" EditMaskType="Simple" />
       </Columns>
       <Filters>
         <Filter Id="Orders_ListView_AllOrders" Caption="All Orders" IsNewNode="True" />
@@ -75,10 +103,15 @@
       </Filters>
     </ListView>
     <ListView Id="Orders_LookupListView" AllowLink="False" AllowUnlink="False" />
-    <ListView Id="Orders_OrderLine_ListView" AllowUnlink="False" AllowLink="False" />
+    <ListView Id="Orders_OrderLine_ListView" AllowUnlink="False" AllowLink="False">
+      <Columns>
+        <ColumnInfo Id="UnitPrice" DisplayFormat="{0:C}" EditMask="" EditMaskType="Simple" />
+        <ColumnInfo Id="Amount" DisplayFormat="{0:C}" EditMask="" EditMaskType="Simple" />
+      </Columns>
+    </ListView>
     <DetailView Id="Profile_DetailView">
       <Items>
-        <PropertyEditor Id="BuildingNumber" DataSourceCriteria="" DisplayFormat="{0:N0}" ImmediatePostData="False" LookupEditorMode="Auto" />
+        <PropertyEditor Id="BuildingNumber" DataSourceCriteria="" ImmediatePostData="False" LookupEditorMode="Auto" />
         <PropertyEditor Id="EmailAddress" EditMask="[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}" EditMaskType="RegEx" />
       </Items>
     </DetailView>

@@ -146,9 +146,13 @@ namespace Exercise2Solution.Module.BusinessObjects
                 orderList = OrderLine.ToList();
             }
 
-            totalVat = orderList.Where(w => w.OrderItem.Vatable == true).Sum(s => (s.OrderItem.Price * s.Quantity))*(decimal)1.15;
-            totalExclVat = orderList.Where(w => w.OrderItem.Vatable == false).Sum(s => (s.OrderItem.Price * s.Quantity));
+            decimal totalVatableWithVat = orderList.Where(w => w.OrderItem.Vatable == true).Sum(s => (s.OrderItem.Price * s.Quantity))*(decimal)0.15;
+            decimal totalVatableWithoutVat = orderList.Where(w => w.OrderItem.Vatable == true).Sum(s => (s.OrderItem.Price * s.Quantity));
 
+            decimal totalNonVatableWithoutVat = orderList.Where(w => w.OrderItem.Vatable == false).Sum(s => (s.OrderItem.Price * s.Quantity));
+
+            totalVat = totalVatableWithVat;
+            totalExclVat = totalVatableWithoutVat + totalNonVatableWithoutVat;
         }
 
         protected override void OnSaving()
