@@ -1,4 +1,5 @@
 ﻿using DevExpress.ExpressApp;
+using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.BaseImpl.PermissionPolicy;
@@ -89,6 +90,7 @@ namespace Exercise2Solution.Module.BusinessObjects
             }
         }
 
+        [ModelDefault("PropertyEditorType", "Exercise2Solution.Module.Web.Editors.CurrencyPropertyEditor")]
         [ImmediatePostData]
         public decimal TotalExclVat
         {
@@ -102,6 +104,7 @@ namespace Exercise2Solution.Module.BusinessObjects
             }
         }
 
+        [ModelDefault("PropertyEditorType", "Exercise2Solution.Module.Web.Editors.CurrencyPropertyEditor")]
         [ImmediatePostData]
         public decimal TotalVat
         {
@@ -115,6 +118,7 @@ namespace Exercise2Solution.Module.BusinessObjects
             }
         }
 
+        [ModelDefault("PropertyEditorType", "Exercise2Solution.Module.Web.Editors.CurrencyPropertyEditor")]
         [PersistentAlias("TotalVat + TotalExclVat")]
         public decimal TotalOrder
         {

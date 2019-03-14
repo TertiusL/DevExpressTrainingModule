@@ -120,6 +120,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Editors\CurrencyPropertyEditor.cs" />
     <Compile Include="WebModule.cs">
       <SubType>Component</SubType>
     </Compile>

@@ -5,6 +5,7 @@ using DevExpress.Xpo;
 using System;
 using System.Linq;
 using Exercise2Solution.Module.BusinessObjects;
+using DevExpress.ExpressApp.Model;
 
 namespace Exercise2Solution.Module.BusinessObjects
 {
@@ -52,12 +53,14 @@ namespace Exercise2Solution.Module.BusinessObjects
             }
         }
 
+        [ModelDefault("PropertyEditorType", "Exercise2Solution.Module.Web.Editors.CurrencyPropertyEditor")]
         public decimal UnitPrice
         {
             get { return unitPrice; }
             set { SetPropertyValue("UnitPrice", ref unitPrice, value); }
         }
 
+        [ModelDefault("PropertyEditorType", "Exercise2Solution.Module.Web.Editors.CurrencyPropertyEditor")]
         [PersistentAlias("Quantity * UnitPrice")]
         public decimal Amount
         {

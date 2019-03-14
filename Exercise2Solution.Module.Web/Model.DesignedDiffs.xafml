@@ -1,6 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Application>
   <BOModel>
+    <Class Name="Exercise2Solution.Module.BusinessObjects.Meals">
+      <OwnMembers>
+        <Member Name="Price" PropertyEditorType="Exercise2Solution.Module.Web.Editors.CurrencyPropertyEditor" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Exercise2Solution.Module.BusinessObjects.OrderLines">
+      <OwnMembers>
+        <Member Name="Amount" PropertyEditorType="Exercise2Solution.Module.Web.Editors.CurrencyPropertyEditor" />
+        <Member Name="UnitPrice" PropertyEditorType="Exercise2Solution.Module.Web.Editors.CurrencyPropertyEditor" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Exercise2Solution.Module.BusinessObjects.Orders">
+      <OwnMembers>
+        <Member Name="TotalExclVat" PropertyEditorType="Exercise2Solution.Module.Web.Editors.CurrencyPropertyEditor" />
+        <Member Name="TotalOrder" PropertyEditorType="Exercise2Solution.Module.Web.Editors.CurrencyPropertyEditor" />
+        <Member Name="TotalVat" PropertyEditorType="Exercise2Solution.Module.Web.Editors.CurrencyPropertyEditor" />
+      </OwnMembers>
+    </Class>
     <Class Name="Exercise2Solution.Module.BusinessObjects.Telephone">
       <OwnMembers>
         <Member Name="TelephoneNumber" EditMask="(00)00-000-0000" DataSourceCriteria="" />
@@ -13,4 +31,11 @@
     <SchemaModule Name="SystemAspNetModule" Version="16.2.7.0" IsNewNode="True" />
     <SchemaModule Name="SystemModule" Version="16.2.7.0" IsNewNode="True" />
   </SchemaModules>
+  <Views>
+    <DetailView Id="OrderLines_DetailView">
+      <Items>
+        <PropertyEditor Id="Amount" PropertyEditorType="Exercise2Solution.Module.Web.Editors.CurrencyPropertyEditor" />
+      </Items>
+    </DetailView>
+  </Views>
 </Application>

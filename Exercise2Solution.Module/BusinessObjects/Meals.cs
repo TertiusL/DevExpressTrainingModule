@@ -1,4 +1,5 @@
-﻿using DevExpress.Persistent.Base;
+﻿using DevExpress.ExpressApp.Model;
+using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.Validation;
 using DevExpress.Xpo;
@@ -23,16 +24,20 @@ namespace Exercise2Solution.Module.BusinessObjects
             get { return deliverable; }
             set { SetPropertyValue("Deliverable", ref deliverable, value); }
         }
+
         public bool Vatable
         {
             get { return vatable; }
             set { SetPropertyValue("Vatable", ref vatable, value); }
         }
+
+        [ModelDefault("PropertyEditorType", "Exercise2Solution.Module.Web.Editors.CurrencyPropertyEditor")]
         public decimal Price
         {
             get { return price; }
             set { SetPropertyValue("Price", ref price, value); }
         }
+
         [RuleRequiredField(DefaultContexts.Save)]
         public string Description
         {

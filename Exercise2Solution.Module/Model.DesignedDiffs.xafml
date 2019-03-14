@@ -3,21 +3,21 @@
   <BOModel>
     <Class Name="Exercise2Solution.Module.BusinessObjects.Meals">
       <OwnMembers>
-        <Member Name="Price" EditMaskType="RegEx" EditMask="[0-9]*\.[0-9][0-9]" DisplayFormat="{0:C2}" PropertyEditorType="DevExpress.ExpressApp.Web.Editors.ASPx.ASPxDecimalPropertyEditor" />
+        <Member Name="Price" EditMaskType="RegEx" EditMask="" DisplayFormat="{0:C}" PropertyEditorType="DevExpress.ExpressApp.Web.Editors.ASPx.ASPxDecimalPropertyEditor" />
       </OwnMembers>
     </Class>
     <Class Name="Exercise2Solution.Module.BusinessObjects.OrderLines">
       <OwnMembers>
-        <Member Name="Amount" EditMask="" DisplayFormat="{0:C2}" PropertyEditorType="DevExpress.ExpressApp.Web.Editors.ASPx.ASPxObjectPropertyEditor" />
-        <Member Name="UnitPrice" PropertyEditorType="DevExpress.ExpressApp.Web.Editors.ASPx.ASPxObjectPropertyEditor" DataSourceCriteria="" EditMaskType="RegEx" AllowEdit="False" EditMask="" DisplayFormat="{0:C2}" />
+        <Member Name="Amount" EditMask="" DisplayFormat="{0:C}" PropertyEditorType="DevExpress.ExpressApp.Web.Editors.ASPx.ASPxDecimalPropertyEditor" />
+        <Member Name="UnitPrice" PropertyEditorType="DevExpress.ExpressApp.Web.Editors.ASPx.ASPxDecimalPropertyEditor" DataSourceCriteria="" EditMaskType="RegEx" AllowEdit="False" EditMask="" DisplayFormat="{0:C}" />
       </OwnMembers>
     </Class>
     <Class Name="Exercise2Solution.Module.BusinessObjects.Orders">
       <OwnMembers>
         <Member Name="CreatedBy" AllowEdit="False" />
-        <Member Name="TotalExclVat" EditMaskType="RegEx" EditMask="" AllowEdit="False" DisplayFormat="{0:C}" PropertyEditorType="DevExpress.ExpressApp.Web.Editors.ASPx.ASPxObjectPropertyEditor" />
-        <Member Name="TotalOrder" EditMaskType="RegEx" EditMask="" DisplayFormat="{0:C}" PropertyEditorType="DevExpress.ExpressApp.Web.Editors.ASPx.ASPxObjectPropertyEditor" />
-        <Member Name="TotalVat" EditMaskType="RegEx" EditMask="" AllowEdit="False" DisplayFormat="{0:C}" PropertyEditorType="DevExpress.ExpressApp.Web.Editors.ASPx.ASPxObjectPropertyEditor" />
+        <Member Name="TotalExclVat" EditMaskType="RegEx" EditMask="" AllowEdit="False" DisplayFormat="{0:C}" PropertyEditorType="DevExpress.ExpressApp.Web.Editors.ASPx.ASPxDecimalPropertyEditor" />
+        <Member Name="TotalOrder" EditMaskType="RegEx" EditMask="" DisplayFormat="{0:C}" PropertyEditorType="DevExpress.ExpressApp.Web.Editors.ASPx.ASPxDecimalPropertyEditor" />
+        <Member Name="TotalVat" EditMaskType="RegEx" EditMask="" AllowEdit="False" DisplayFormat="{0:C}" PropertyEditorType="DevExpress.ExpressApp.Web.Editors.ASPx.ASPxDecimalPropertyEditor" />
       </OwnMembers>
     </Class>
     <Class Name="Exercise2Solution.Module.BusinessObjects.Telephone">
@@ -54,18 +54,18 @@
     <ListView Id="Department_LookupListView" AllowEdit="False" AllowLink="False" AllowNew="True" AllowUnlink="False" />
     <DetailView Id="Meals_DetailView">
       <Items>
-        <PropertyEditor Id="Price" DisplayFormat="{0:C2}" />
+        <PropertyEditor Id="Price" DisplayFormat="{0:C}" />
       </Items>
     </DetailView>
     <ListView Id="Meals_ListView" AllowLink="False" AllowUnlink="False">
       <Columns>
-        <ColumnInfo Id="Price" DisplayFormat="{0:C2}" EditMask="[0-9]*\.[0-9][0-9]" />
+        <ColumnInfo Id="Price" DisplayFormat="{0:C}" EditMask="" />
       </Columns>
     </ListView>
     <ListView Id="Meals_LookupListView" AllowUnlink="False" AllowLink="False" />
     <DetailView Id="OrderLines_DetailView">
       <Items>
-        <PropertyEditor Id="Amount" DisplayFormat="{0:C}" EditMask="" />
+        <PropertyEditor Id="Amount" DisplayFormat="{0:C}" EditMask="" PropertyEditorType="DevExpress.ExpressApp.Web.Editors.ASPx.ASPxDecimalPropertyEditor" />
         <PropertyEditor Id="UnitPrice" DisplayFormat="{0:C}" EditMask="" />
       </Items>
     </DetailView>
