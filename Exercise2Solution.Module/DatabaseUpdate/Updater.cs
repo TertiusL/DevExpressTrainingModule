@@ -25,10 +25,10 @@ namespace Exercise2Solution.Module.DatabaseUpdate
             PermissionPolicyRole userRole = ObjectSpace.FindObject<PermissionPolicyRole>(new BinaryOperator("Name", "Users"));
             PermissionPolicyRole canteenRole = ObjectSpace.FindObject<PermissionPolicyRole>(new BinaryOperator("Name", "CanteenUsers"));
             PermissionPolicyRole staffRole = ObjectSpace.FindObject<PermissionPolicyRole>(new BinaryOperator("Name", "StaffUsers"));
-            PermissionPolicyUser admin = ObjectSpace.FindObject<PermissionPolicyUser>(new BinaryOperator("UserName", "Tertius"));
-            PermissionPolicyUser baseUser = ObjectSpace.FindObject<PermissionPolicyUser>(new BinaryOperator("UserName", "Sara"));
-            PermissionPolicyUser canteenUser = ObjectSpace.FindObject<PermissionPolicyUser>(new BinaryOperator("UserName", "Frik"));
-            PermissionPolicyUser staffUser = ObjectSpace.FindObject<PermissionPolicyUser>(new BinaryOperator("UserName", "Piet"));
+            Profile admin = ObjectSpace.FindObject<Profile>(new BinaryOperator("UserName", "Tertius"));
+            Profile baseUser = ObjectSpace.FindObject<Profile>(new BinaryOperator("UserName", "Sara"));
+            Profile canteenUser = ObjectSpace.FindObject<Profile>(new BinaryOperator("UserName", "Frik"));
+            Profile staffUser = ObjectSpace.FindObject<Profile>(new BinaryOperator("UserName", "Piet"));
 
             Telephone rdTelephoneNumber = ObjectSpace.FindObject<Telephone>(CriteriaOperator.Parse("TelephoneNumber == '0814669402'"));
             if (rdTelephoneNumber == null)
@@ -43,30 +43,66 @@ namespace Exercise2Solution.Module.DatabaseUpdate
 
             if (admin == null)
             {
-                admin = ObjectSpace.CreateObject<PermissionPolicyUser>();
+                admin = ObjectSpace.CreateObject<Profile>();
                 admin.UserName = "Tertius";
                 admin.SetPassword("1234");
+
+                //Profile Class Fields
+                admin.Surname = "Liebenberg";
+                admin.Title = "Mr.";
+                admin.Initials = "T";
+                admin.EmailAddress = "tester@wester.com";
+                admin.Department = null;
+                admin.BuildingNumber = 2;
+                admin.Floor = 2;
             }
 
             if (baseUser == null)
             {
-                baseUser = ObjectSpace.CreateObject<PermissionPolicyUser>();
+                baseUser = ObjectSpace.CreateObject<Profile>();
                 baseUser.UserName = "Sara";
                 baseUser.SetPassword("");
+
+                //Profile Class Fields
+                baseUser.Surname = "Verster";
+                baseUser.Title = "Ms.";
+                baseUser.Initials = "S";
+                baseUser.EmailAddress = "test@west.com";
+                baseUser.Department = null;
+                baseUser.BuildingNumber = 1;
+                baseUser.Floor = 2;
             }
 
             if (canteenUser == null)
             {
-                baseUser = ObjectSpace.CreateObject<PermissionPolicyUser>();
-                baseUser.UserName = "Frik";
-                baseUser.SetPassword("Cantina");
+                canteenUser = ObjectSpace.CreateObject<Profile>();
+                canteenUser.UserName = "Frik";
+                canteenUser.SetPassword("Cantina");
+
+                //Profile Class Fields
+                canteenUser.Surname = "Pogenpoel";
+                canteenUser.Title = "Mr.";
+                canteenUser.Initials = "FG";
+                canteenUser.EmailAddress = "testing@westing.com";
+                canteenUser.Department = null;
+                canteenUser.BuildingNumber = 1;
+                canteenUser.Floor = 1;
             }
 
             if (staffUser == null)
             {
-                baseUser = ObjectSpace.CreateObject<PermissionPolicyUser>();
-                baseUser.UserName = "Piet";
-                baseUser.SetPassword("Staffer");
+                staffUser = ObjectSpace.CreateObject<Profile>();
+                staffUser.UserName = "Piet";
+                staffUser.SetPassword("Staffer");
+
+                //Profile Class Fields
+                staffUser.Surname = "Boela";
+                staffUser.Title = "Mr.";
+                staffUser.Initials = "P";
+                staffUser.EmailAddress = "tested@wested.com";
+                staffUser.Department = null;
+                staffUser.BuildingNumber = 2;
+                staffUser.Floor = 1;
             }
 
             if (adminRole == null)
@@ -83,10 +119,10 @@ namespace Exercise2Solution.Module.DatabaseUpdate
                 userRole.Name = "Users";
                 userRole.PermissionPolicy = SecurityPermissionPolicy.AllowAllByDefault;
                 userRole.AddTypePermission<PermissionPolicyRole>(SecurityOperations.FullAccess, SecurityPermissionState.Deny);
-                userRole.AddTypePermission<PermissionPolicyUser>(SecurityOperations.FullAccess, SecurityPermissionState.Deny);
-                userRole.AddObjectPermission<PermissionPolicyUser>(SecurityOperations.ReadOnlyAccess, "[Oid] = CurrentUserId()", SecurityPermissionState.Allow);
-                userRole.AddMemberPermission<PermissionPolicyUser>(SecurityOperations.Write, "ChangePasswordOnFirstLogon", null, SecurityPermissionState.Allow);
-                userRole.AddMemberPermission<PermissionPolicyUser>(SecurityOperations.Write, "StoredPassword", null, SecurityPermissionState.Allow);
+                userRole.AddTypePermission<Profile>(SecurityOperations.FullAccess, SecurityPermissionState.Deny);
+                userRole.AddObjectPermission<Profile>(SecurityOperations.ReadOnlyAccess, "[Oid] = CurrentUserId()", SecurityPermissionState.Allow);
+                userRole.AddMemberPermission<Profile>(SecurityOperations.Write, "ChangePasswordOnFirstLogon", null, SecurityPermissionState.Allow);
+                userRole.AddMemberPermission<Profile>(SecurityOperations.Write, "StoredPassword", null, SecurityPermissionState.Allow);
                 userRole.AddTypePermission<PermissionPolicyRole>(SecurityOperations.Read, SecurityPermissionState.Allow);
                 userRole.AddTypePermission<PermissionPolicyTypePermissionObject>("Write;Delete;Navigate;Create", SecurityPermissionState.Deny);
                 userRole.AddTypePermission<PermissionPolicyMemberPermissionsObject>("Write;Delete;Navigate;Create", SecurityPermissionState.Deny);
@@ -95,42 +131,35 @@ namespace Exercise2Solution.Module.DatabaseUpdate
 
             if (canteenRole == null)
             {
-                userRole = ObjectSpace.CreateObject<PermissionPolicyRole>();
-                userRole.Name = "CanteenUsers";
-                userRole.PermissionPolicy = SecurityPermissionPolicy.AllowAllByDefault;
-                userRole.AddTypePermission<PermissionPolicyRole>(SecurityOperations.FullAccess, SecurityPermissionState.Deny);
-                userRole.AddTypePermission<PermissionPolicyUser>(SecurityOperations.FullAccess, SecurityPermissionState.Deny);
-                userRole.AddObjectPermission<PermissionPolicyUser>(SecurityOperations.ReadOnlyAccess, "[Oid] = CurrentUserId()", SecurityPermissionState.Allow);
-                userRole.AddMemberPermission<PermissionPolicyUser>(SecurityOperations.Write, "ChangePasswordOnFirstLogon", null, SecurityPermissionState.Allow);
-                userRole.AddMemberPermission<PermissionPolicyUser>(SecurityOperations.Write, "StoredPassword", null, SecurityPermissionState.Allow);
-                userRole.AddTypePermission<PermissionPolicyRole>(SecurityOperations.Read, SecurityPermissionState.Allow);
-                userRole.AddTypePermission<PermissionPolicyTypePermissionObject>("Write;Delete;Navigate;Create", SecurityPermissionState.Deny);
-                userRole.AddTypePermission<PermissionPolicyMemberPermissionsObject>("Write;Delete;Navigate;Create", SecurityPermissionState.Deny);
-                userRole.AddTypePermission<PermissionPolicyObjectPermissionsObject>("Write;Delete;Navigate;Create", SecurityPermissionState.Deny);
+                canteenRole = ObjectSpace.CreateObject<PermissionPolicyRole>();
+                canteenRole.Name = "CanteenUsers";
+                canteenRole.PermissionPolicy = SecurityPermissionPolicy.AllowAllByDefault;
+                canteenRole.AddTypePermission<PermissionPolicyRole>(SecurityOperations.FullAccess, SecurityPermissionState.Deny);
+                canteenRole.AddTypePermission<Profile>(SecurityOperations.FullAccess, SecurityPermissionState.Deny);
+                canteenRole.AddObjectPermission<Profile>(SecurityOperations.ReadOnlyAccess, "[Oid] = CurrentUserId()", SecurityPermissionState.Allow);
+                canteenRole.AddMemberPermission<Profile>(SecurityOperations.Write, "ChangePasswordOnFirstLogon", null, SecurityPermissionState.Allow);
+                canteenRole.AddMemberPermission<Profile>(SecurityOperations.Write, "StoredPassword", null, SecurityPermissionState.Allow);
+                canteenRole.AddTypePermission<PermissionPolicyRole>(SecurityOperations.Read, SecurityPermissionState.Allow);
+                canteenRole.AddTypePermission<PermissionPolicyTypePermissionObject>("Write;Delete;Navigate;Create", SecurityPermissionState.Deny);
+                canteenRole.AddTypePermission<PermissionPolicyMemberPermissionsObject>("Write;Delete;Navigate;Create", SecurityPermissionState.Deny);
+                canteenRole.AddTypePermission<PermissionPolicyObjectPermissionsObject>("Write;Delete;Navigate;Create", SecurityPermissionState.Deny);
             }
 
             if (staffRole == null)
             {
-                userRole = ObjectSpace.CreateObject<PermissionPolicyRole>();
-                userRole.Name = "StaffUsers";
-                userRole.PermissionPolicy = SecurityPermissionPolicy.AllowAllByDefault;
-                userRole.AddTypePermission<PermissionPolicyRole>(SecurityOperations.FullAccess, SecurityPermissionState.Deny);
-                userRole.AddTypePermission<PermissionPolicyUser>(SecurityOperations.FullAccess, SecurityPermissionState.Deny);
-                userRole.AddObjectPermission<PermissionPolicyUser>(SecurityOperations.ReadOnlyAccess, "[Oid] = CurrentUserId()", SecurityPermissionState.Allow);
-                userRole.AddMemberPermission<PermissionPolicyUser>(SecurityOperations.Write, "ChangePasswordOnFirstLogon", null, SecurityPermissionState.Allow);
-                userRole.AddMemberPermission<PermissionPolicyUser>(SecurityOperations.Write, "StoredPassword", null, SecurityPermissionState.Allow);
-                userRole.AddTypePermission<PermissionPolicyRole>(SecurityOperations.Read, SecurityPermissionState.Allow);
-                userRole.AddTypePermission<PermissionPolicyTypePermissionObject>("Write;Delete;Navigate;Create", SecurityPermissionState.Deny);
-                userRole.AddTypePermission<PermissionPolicyMemberPermissionsObject>("Write;Delete;Navigate;Create", SecurityPermissionState.Deny);
-                userRole.AddTypePermission<PermissionPolicyObjectPermissionsObject>("Write;Delete;Navigate;Create", SecurityPermissionState.Deny);
-            }
-            else
-            {
-                /** Testing to see if it stops creating thousands of records */
-            }
-
-            /** Calls the DefaultRole method, which is depricated in our project at this point. Keeping it as example code */
-            //CreateDefaultRole();          
+                staffRole = ObjectSpace.CreateObject<PermissionPolicyRole>();
+                staffRole.Name = "StaffUsers";
+                staffRole.PermissionPolicy = SecurityPermissionPolicy.AllowAllByDefault;
+                staffRole.AddTypePermission<PermissionPolicyRole>(SecurityOperations.FullAccess, SecurityPermissionState.Deny);
+                staffRole.AddTypePermission<Profile>(SecurityOperations.FullAccess, SecurityPermissionState.Deny);
+                staffRole.AddObjectPermission<Profile>(SecurityOperations.ReadOnlyAccess, "[Oid] = CurrentUserId()", SecurityPermissionState.Allow);
+                staffRole.AddMemberPermission<Profile>(SecurityOperations.Write, "ChangePasswordOnFirstLogon", null, SecurityPermissionState.Allow);
+                staffRole.AddMemberPermission<Profile>(SecurityOperations.Write, "StoredPassword", null, SecurityPermissionState.Allow);
+                staffRole.AddTypePermission<PermissionPolicyRole>(SecurityOperations.Read, SecurityPermissionState.Allow);
+                staffRole.AddTypePermission<PermissionPolicyTypePermissionObject>("Write;Delete;Navigate;Create", SecurityPermissionState.Deny);
+                staffRole.AddTypePermission<PermissionPolicyMemberPermissionsObject>("Write;Delete;Navigate;Create", SecurityPermissionState.Deny);
+                staffRole.AddTypePermission<PermissionPolicyObjectPermissionsObject>("Write;Delete;Navigate;Create", SecurityPermissionState.Deny);
+            }         
 
             admin.Roles.Add(adminRole);
             baseUser.Roles.Add(userRole);
@@ -141,28 +170,6 @@ namespace Exercise2Solution.Module.DatabaseUpdate
         public override void UpdateDatabaseBeforeUpdateSchema()
         {
             base.UpdateDatabaseBeforeUpdateSchema();
-            //if(CurrentDBVersion < new Version("1.1.0.0") && CurrentDBVersion > new Version("0.0.0.0")) {
-            //    RenameColumn("DomainObject1Table", "OldColumnName", "NewColumnName");
-            //}
         }
-        /** private PermissionPolicyRole CreateDefaultRole() {
-             PermissionPolicyRole defaultRole = ObjectSpace.FindObject<PermissionPolicyRole>(new BinaryOperator("Name", "Default"));
-             if(defaultRole == null) {
-                 defaultRole = ObjectSpace.CreateObject<PermissionPolicyRole>();
-                 defaultRole.Name = "Default";
-
-                 defaultRole.AddObjectPermission<PermissionPolicyUser>(SecurityOperations.Read, "[Oid] = CurrentUserId()", SecurityPermissionState.Allow);
-                 defaultRole.AddNavigationPermission(@"Application/NavigationItems/Items/Default/Items/MyDetails", SecurityPermissionState.Allow);
-                 defaultRole.AddMemberPermission<PermissionPolicyUser>(SecurityOperations.Write, "ChangePasswordOnFirstLogon", "[Oid] = CurrentUserId()", SecurityPermissionState.Allow);
-                 defaultRole.AddMemberPermission<PermissionPolicyUser>(SecurityOperations.Write, "StoredPassword", "[Oid] = CurrentUserId()", SecurityPermissionState.Allow);
-                 defaultRole.AddTypePermissionsRecursively<PermissionPolicyRole>(SecurityOperations.Read, SecurityPermissionState.Deny);
-                 defaultRole.AddTypePermissionsRecursively<ModelDifference>(SecurityOperations.ReadWriteAccess, SecurityPermissionState.Allow);
-                 defaultRole.AddTypePermissionsRecursively<ModelDifferenceAspect>(SecurityOperations.ReadWriteAccess, SecurityPermissionState.Allow);
-                 defaultRole.AddTypePermissionsRecursively<ModelDifference>(SecurityOperations.Create, SecurityPermissionState.Allow);
-                 defaultRole.AddTypePermissionsRecursively<ModelDifferenceAspect>(SecurityOperations.Create, SecurityPermissionState.Allow);                
-             }
-             return defaultRole;
-         }
-             */
     }
 }

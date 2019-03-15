@@ -1,5 +1,6 @@
 ﻿using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl;
+using DevExpress.Persistent.BaseImpl.PermissionPolicy;
 using DevExpress.Persistent.Validation;
 using DevExpress.Xpo;
 using System;
@@ -17,7 +18,7 @@ namespace Exercise2Solution.Module.BusinessObjects
     [DefaultClassOptions, ImageName("Profile")]
     [System.ComponentModel.DefaultProperty("Surname")]
     [RuleCriteria("RuleCriteria for BuildingNumber", DefaultContexts.Save, "BuildingNumber >= 1 && BuildingNumber <= 5", CustomMessageTemplate ="Building Number has to be between 1 and 5!")]
-    public class Profile : BaseObject
+    public class Profile : PermissionPolicyUser
     {
         public Profile(Session session) : base(session) { }
         public override void AfterConstruction()
