@@ -3,7 +3,6 @@ using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.BaseImpl.PermissionPolicy;
-using DevExpress.Persistent.Validation;
 using DevExpress.Xpo;
 using System;
 using System.Collections.Generic;
@@ -27,7 +26,7 @@ namespace Exercise2Solution.Module.BusinessObjects
         {
             base.AfterConstruction();
             createdBy = Session.GetObjectByKey<PermissionPolicyUser>(SecuritySystem.CurrentUserId);
-            
+
         }
 
         private DateTime order = DateTime.Now;
@@ -36,8 +35,8 @@ namespace Exercise2Solution.Module.BusinessObjects
         private Status status;
         private decimal totalVat;
         private decimal totalExclVat;
-        PermissionPolicyUser createdBy;     
-        
+        PermissionPolicyUser createdBy;
+
         public PermissionPolicyUser CreatedBy
         {
             get { return createdBy; }
@@ -75,7 +74,7 @@ namespace Exercise2Solution.Module.BusinessObjects
             {
                 if (SetPropertyValue("Status", ref status, value) && !IsLoading && !IsSaving)
                 {
-                    if(Status == Status.Delivered)
+                    if (Status == Status.Delivered)
                     {
                         Delivered = DateTime.Now.Date;
                     }
@@ -139,8 +138,8 @@ namespace Exercise2Solution.Module.BusinessObjects
         {
             get
             {
-               return GetCollection<OrderLines>("OrderLine");
-            }         
+                return GetCollection<OrderLines>("OrderLine");
+            }
         }
 
         public void AddCalcTotal(List<OrderLines> orderList)
@@ -150,7 +149,7 @@ namespace Exercise2Solution.Module.BusinessObjects
                 orderList = OrderLine.ToList();
             }
 
-            decimal totalVatableWithVat = orderList.Where(w => w.OrderItem.Vatable == true).Sum(s => (s.OrderItem.Price * s.Quantity))*(decimal)0.15;
+            decimal totalVatableWithVat = orderList.Where(w => w.OrderItem.Vatable == true).Sum(s => (s.OrderItem.Price * s.Quantity)) * (decimal)0.15;
             decimal totalVatableWithoutVat = orderList.Where(w => w.OrderItem.Vatable == true).Sum(s => (s.OrderItem.Price * s.Quantity));
 
             decimal totalNonVatableWithoutVat = orderList.Where(w => w.OrderItem.Vatable == false).Sum(s => (s.OrderItem.Price * s.Quantity));
@@ -164,6 +163,6 @@ namespace Exercise2Solution.Module.BusinessObjects
             AddCalcTotal(null);
             base.OnSaving();
         }
-        
+
     }
 }

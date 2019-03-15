@@ -1,11 +1,10 @@
-﻿using DevExpress.Persistent.Base;
+﻿using DevExpress.ExpressApp.Model;
+using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.Validation;
 using DevExpress.Xpo;
 using System;
 using System.Linq;
-using Exercise2Solution.Module.BusinessObjects;
-using DevExpress.ExpressApp.Model;
 
 namespace Exercise2Solution.Module.BusinessObjects
 {
@@ -18,7 +17,7 @@ namespace Exercise2Solution.Module.BusinessObjects
         public override void AfterConstruction()
         {
             base.AfterConstruction();
-            
+
         }
 
         private Orders _order;
@@ -32,7 +31,7 @@ namespace Exercise2Solution.Module.BusinessObjects
             get { return orderItem; }
             set
             {
-                if(SetPropertyValue("OrderItem", ref orderItem, value) && !IsLoading && !IsSaving)
+                if (SetPropertyValue("OrderItem", ref orderItem, value) && !IsLoading && !IsSaving)
                 {
                     unitPrice = OrderItem.Price;
                     Quantity = 1;
