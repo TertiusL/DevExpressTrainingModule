@@ -28,6 +28,7 @@
     <Class Name="Exercise2Solution.Module.BusinessObjects.Telephone">
       <OwnMembers>
         <Member Name="DateCreated" AllowEdit="False" />
+        <Member Name="ExtNum" AllowEdit="False" />
         <Member Name="TelephoneNumber" EditMask="(00)00-000-0000" DisplayFormat="" EditMaskType="Simple" DataSourceCriteria="" />
       </OwnMembers>
     </Class>

@@ -16,8 +16,7 @@ namespace Exercise2Solution.Module.BusinessObjects
     }
 
     [DefaultClassOptions, ImageName("Profile")]
-    [System.ComponentModel.DefaultProperty("FullName")]
-    [RuleCriteria("RuleCriteria for BuildingNumber", DefaultContexts.Save, "BuildingNumber >= 1 && BuildingNumber <= 5", CustomMessageTemplate ="Building Number has to be between 1 and 5!")]
+    [System.ComponentModel.DefaultProperty("FullName")]    
     public class Profile : PermissionPolicyUser
     {
         public Profile(Session session) : base(session) { }
@@ -97,7 +96,7 @@ namespace Exercise2Solution.Module.BusinessObjects
             set { SetPropertyValue("Department", ref department, value); }
         }
 
-        [RuleRequiredField(DefaultContexts.Save)]
+        [RuleRequiredField(DefaultContexts.Save), RuleRange(1, 5, CustomMessageTemplate = "Building Number has to be between 1 and 5!")]
         public int BuildingNumber
         {
             get { return buildingNumber; }
