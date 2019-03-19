@@ -49,6 +49,7 @@ namespace Exercise2Solution.Module.DatabaseUpdate
 
                 //Profile Class Fields
                 admin.Surname = "Liebenberg";
+                admin.Name = "Tertius";
                 admin.Title = "Mr.";
                 admin.Initials = "T";
                 admin.EmailAddress = "tester@wester.com";
@@ -64,6 +65,7 @@ namespace Exercise2Solution.Module.DatabaseUpdate
 
                 //Profile Class Fields
                 baseUser.Surname = "Verster";
+                baseUser.Name = "Sara";
                 baseUser.Title = "Ms.";
                 baseUser.Initials = "S";
                 baseUser.EmailAddress = "test@west.com";
@@ -79,6 +81,7 @@ namespace Exercise2Solution.Module.DatabaseUpdate
 
                 //Profile Class Fields
                 canteenUser.Surname = "Pogenpoel";
+                canteenUser.Name = "Frik Gerhardus";
                 canteenUser.Title = "Mr.";
                 canteenUser.Initials = "FG";
                 canteenUser.EmailAddress = "testing@westing.com";
@@ -94,6 +97,7 @@ namespace Exercise2Solution.Module.DatabaseUpdate
 
                 //Profile Class Fields
                 staffUser.Surname = "Boela";
+                staffUser.Name = "Pieter";
                 staffUser.Title = "Mr.";
                 staffUser.Initials = "P";
                 staffUser.EmailAddress = "tested@wested.com";
