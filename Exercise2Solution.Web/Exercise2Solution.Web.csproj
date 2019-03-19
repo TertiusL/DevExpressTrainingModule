@@ -161,11 +161,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CantinaIco.ico" />
     <Content Include="Default.aspx" />
     <Content Include="Error.aspx" />
     <Content Include="Global.asax" />
-    <EmbeddedResource Include="Images\Logo.ico" />
-    <EmbeddedResource Include="Images\Logo.png" />
+    <EmbeddedResource Include="Images\CantinaIco.ico" />
+    <EmbeddedResource Include="Images\CantinaLogo.png" />
     <Content Include="Login.aspx" />
   </ItemGroup>
   <ItemGroup>
@@ -235,9 +236,13 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>CantinaIco.ico</ApplicationIcon>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />

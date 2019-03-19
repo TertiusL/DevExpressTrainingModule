@@ -43,7 +43,8 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Images\cantina.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.Charts.v16.2.Core, Version=16.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -189,7 +190,6 @@
     <EmbeddedResource Include="Images\OrderLine_32x32.png" />
     <EmbeddedResource Include="Images\Orders.png" />
     <EmbeddedResource Include="Images\Orders_32x32.png" />
-    <Content Include="Images\cantina.ico" />
     <Content Include="Welcome.html" />
   </ItemGroup>
   <ItemGroup />
