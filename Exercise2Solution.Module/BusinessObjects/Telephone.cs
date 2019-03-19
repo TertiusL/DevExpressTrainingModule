@@ -32,15 +32,12 @@ namespace Exercise2Solution.Module.BusinessObjects
             set { SetPropertyValue("Active", ref active, value); }
         }
 
-        [ImmediatePostData]
         public TelephoneType TelephoneType
         {
             get { return telephoneType; }
             set { telephoneType = value; }
         }
 
-
-        [ImmediatePostData]
         public string TelephoneNumber
         {
             get { return telephoneNumber; }
@@ -63,11 +60,32 @@ namespace Exercise2Solution.Module.BusinessObjects
 
         protected override void OnSaving()
         {
-            if (TelephoneType == TelephoneType.W)
+            string lastDigits;
+
+            switch (TelephoneType)
             {
-                string lastDigits = TelephoneNumber.Substring(11);
-                _extNum = "(" + Customer.BuildingNumber + ")" + lastDigits;
+                case TelephoneType.C:
+                    lastDigits = TelephoneNumber.Substring(11);
+                    _extNum = lastDigits;
+                    break;
+
+                case TelephoneType.W:
+                    lastDigits = TelephoneNumber.Substring(11);
+                    _extNum = "(" + Customer.BuildingNumber + ")" + lastDigits;
+                    break;
+
+                case TelephoneType.H:
+                    lastDigits = TelephoneNumber.Substring(11);
+                    _extNum = lastDigits;
+                    break;
+
+                default:
+                    lastDigits = TelephoneNumber.Substring(11);
+                    _extNum = lastDigits;
+                    break;
             }
+
+
             base.OnSaving();
         }
     }
