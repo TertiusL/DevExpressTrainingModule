@@ -13,14 +13,15 @@ namespace Exercise2Solution.Module.BusinessObjects
         public Department(Session session) : base(session) { }
 
         private string description;
-        private string manager;
+        private Profile manager;
 
         public string Description
         {
             get { return description; }
             set { SetPropertyValue("Description", ref description, value); }
         }
-        public string Manager
+        
+        public Profile Manager
         {
             get { return manager; }
             set { SetPropertyValue("Manager", ref manager, value); }

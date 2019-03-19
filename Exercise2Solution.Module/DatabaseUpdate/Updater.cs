@@ -52,7 +52,6 @@ namespace Exercise2Solution.Module.DatabaseUpdate
                 admin.Title = "Mr.";
                 admin.Initials = "T";
                 admin.EmailAddress = "tester@wester.com";
-                admin.Department = null;
                 admin.BuildingNumber = 2;
                 admin.Floor = 2;
             }
@@ -68,7 +67,6 @@ namespace Exercise2Solution.Module.DatabaseUpdate
                 baseUser.Title = "Ms.";
                 baseUser.Initials = "S";
                 baseUser.EmailAddress = "test@west.com";
-                baseUser.Department = null;
                 baseUser.BuildingNumber = 1;
                 baseUser.Floor = 2;
             }
@@ -84,7 +82,6 @@ namespace Exercise2Solution.Module.DatabaseUpdate
                 canteenUser.Title = "Mr.";
                 canteenUser.Initials = "FG";
                 canteenUser.EmailAddress = "testing@westing.com";
-                canteenUser.Department = null;
                 canteenUser.BuildingNumber = 1;
                 canteenUser.Floor = 1;
             }
@@ -100,7 +97,6 @@ namespace Exercise2Solution.Module.DatabaseUpdate
                 staffUser.Title = "Mr.";
                 staffUser.Initials = "P";
                 staffUser.EmailAddress = "tested@wested.com";
-                staffUser.Department = null;
                 staffUser.BuildingNumber = 2;
                 staffUser.Floor = 1;
             }

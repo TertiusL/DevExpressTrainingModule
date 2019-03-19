@@ -51,8 +51,8 @@ namespace Exercise2Solution.Module.Web.Editors
             {
                 ASPxTextBox aSPxTextBox = (ASPxTextBox)control;
                 ASPxPureTextBoxBase aSPxPureTextBox = (ASPxPureTextBoxBase)control;
-                aSPxPureTextBox.HorizontalAlign = HorizontalAlign.Right;
-                aSPxTextBox.MaskSettings.Mask = "R <-99999999999..99999999999g>.<00..99>";
+                aSPxPureTextBox.HorizontalAlign = HorizontalAlign.Left;
+                aSPxTextBox.MaskSettings.Mask = "$ <-99999999999..99999999999g>.<00..99>";
                 aSPxTextBox.MaskSettings.IncludeLiterals = MaskIncludeLiteralsMode.All;
                 aSPxTextBox.MaskSettings.AllowMouseWheel = false;
                 aSPxTextBox.DisplayFormatString = CurrencyFormat;

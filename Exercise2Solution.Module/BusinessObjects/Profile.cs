@@ -16,7 +16,7 @@ namespace Exercise2Solution.Module.BusinessObjects
     }
 
     [DefaultClassOptions, ImageName("Profile")]
-    [System.ComponentModel.DefaultProperty("Surname")]
+    [System.ComponentModel.DefaultProperty("FullName")]
     [RuleCriteria("RuleCriteria for BuildingNumber", DefaultContexts.Save, "BuildingNumber >= 1 && BuildingNumber <= 5", CustomMessageTemplate ="Building Number has to be between 1 and 5!")]
     public class Profile : PermissionPolicyUser
     {
@@ -30,6 +30,7 @@ namespace Exercise2Solution.Module.BusinessObjects
         private string title;
         private string initials;
         private string surname;
+        private string name;
         private string emailAddress;
         private Department department;
         private int buildingNumber = 1;
@@ -49,11 +50,39 @@ namespace Exercise2Solution.Module.BusinessObjects
             set { SetPropertyValue("Initials", ref initials, value); }
         }
 
-        [RuleRequiredField(DefaultContexts.Save)]
+        [RuleRequiredField(DefaultContexts.Save), ImmediatePostData]
         public string Surname
         {
             get { return surname; }
-            set { SetPropertyValue("Surname", ref surname, value); }
+            set
+            {
+                if (SetPropertyValue("Surname", ref surname, value))
+                {
+                    OnChanged("FullName");
+                }
+            }
+        }
+
+        [ImmediatePostData]
+        public string Name
+        {
+            get { return name; }
+            set
+            {
+                if (SetPropertyValue("Name", ref name, value))
+                {
+                    OnChanged("FullName");
+                }
+            }
+        }
+
+        [PersistentAlias("Concat([Name],' ',[Surname])")]
+        public string FullName
+        {
+            get
+            {
+                return (string)EvaluateAlias("FullName");
+            }
         }
 
         public string EmailAddress

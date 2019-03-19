@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head runat="server">
-    <title>Main Page</title>
+    <title>MyTrainingCanteen</title>
     <meta http-equiv="Expires" content="0" />
     <style type="text/css">
         .dxm-item.accountItem.dxm-subMenu .dx-vam

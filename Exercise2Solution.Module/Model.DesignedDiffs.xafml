@@ -1,6 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Application Title="Exercise2Solution">
+<Application Title="MyTrainingCanteen" CurrentUserDisplayMode="Default">
   <BOModel>
+    <Class Name="Exercise2Solution.Module.BusinessObjects.Department">
+      <OwnMembers>
+        <Member Name="Manager" DataSourceProperty="" LookupProperty="FullName" />
+      </OwnMembers>
+    </Class>
     <Class Name="Exercise2Solution.Module.BusinessObjects.Meals">
       <OwnMembers>
         <Member Name="Price" EditMaskType="RegEx" EditMask="" DisplayFormat="{0:C}" PropertyEditorType="DevExpress.ExpressApp.Web.Editors.ASPx.ASPxDecimalPropertyEditor" />
@@ -22,6 +27,7 @@
     </Class>
     <Class Name="Exercise2Solution.Module.BusinessObjects.Telephone">
       <OwnMembers>
+        <Member Name="DateCreated" AllowEdit="False" />
         <Member Name="TelephoneNumber" EditMask="(00)00-000-0000" DisplayFormat="" EditMaskType="Simple" DataSourceCriteria="" />
       </OwnMembers>
     </Class>

@@ -35,7 +35,14 @@ namespace Exercise2Solution.Module.BusinessObjects
         private Status status;
         private decimal totalVat;
         private decimal totalExclVat;
+        private int _appliedVat;
         PermissionPolicyUser createdBy;
+
+        public int AppliedVat
+        {
+            get { return _appliedVat; }
+            set { SetPropertyValue("AppliedVat", ref _appliedVat, value); }
+        }
 
         public PermissionPolicyUser CreatedBy
         {
@@ -149,7 +156,7 @@ namespace Exercise2Solution.Module.BusinessObjects
                 orderList = OrderLine.ToList();
             }
 
-            decimal totalVatableWithVat = orderList.Where(w => w.OrderItem.Vatable == true).Sum(s => (s.OrderItem.Price * s.Quantity)) * (decimal)0.15;
+            decimal totalVatableWithVat = orderList.Where(w => w.OrderItem.Vatable == true).Sum(s => (s.OrderItem.Price * s.Quantity)) * ((decimal)(AppliedVat/100));
             decimal totalVatableWithoutVat = orderList.Where(w => w.OrderItem.Vatable == true).Sum(s => (s.OrderItem.Price * s.Quantity));
 
             decimal totalNonVatableWithoutVat = orderList.Where(w => w.OrderItem.Vatable == false).Sum(s => (s.OrderItem.Price * s.Quantity));
