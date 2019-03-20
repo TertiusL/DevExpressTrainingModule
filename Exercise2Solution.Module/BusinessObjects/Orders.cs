@@ -129,7 +129,7 @@ namespace Exercise2Solution.Module.BusinessObjects
             }
         }
 
-        [Association("Order-OrderLine"), Aggregated]
+        [Association("Order-OrderLine"), Aggregated, RuleRequiredField(DefaultContexts.Save)]
         public XPCollection<OrderLines> OrderLine
         {
             get

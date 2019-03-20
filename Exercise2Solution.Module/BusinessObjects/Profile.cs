@@ -112,7 +112,7 @@ namespace Exercise2Solution.Module.BusinessObjects
         }
 
         /** Here we are setting a one to many relationship with 'Telephone'. This is the 'many' part*/
-        [Association("Profile-Telephone")]
+        [Association("Profile-Telephone"), RuleRequiredField(DefaultContexts.Save)]
         public XPCollection<Telephone> TelephoneNumbers
         {
             get { return GetCollection<Telephone>("TelephoneNumbers"); }
