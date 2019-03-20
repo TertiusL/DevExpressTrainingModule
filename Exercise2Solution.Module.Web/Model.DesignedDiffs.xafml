@@ -37,5 +37,24 @@
         <PropertyEditor Id="Amount" PropertyEditorType="Exercise2Solution.Module.Web.Editors.CurrencyPropertyEditor" />
       </Items>
     </DetailView>
+    <DetailView Id="Telephone_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="Telephone" RelativeSize="100">
+              <LayoutGroup Id="Telephone_col1" RelativeSize="50">
+                <LayoutItem Id="DateCreated" RelativeSize="4.9645390070921982" />
+                <LayoutItem Id="Active" RelativeSize="3.4042553191489362" />
+                <LayoutItem Id="TelephoneType" RelativeSize="91.63120567375887" />
+              </LayoutGroup>
+              <LayoutGroup Id="Telephone_col2" Caption="Telephone_col2" RelativeSize="50">
+                <LayoutItem Id="TelephoneNumber" RelativeSize="100" />
+                <LayoutItem Id="ExtNum" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
   </Views>
 </Application>

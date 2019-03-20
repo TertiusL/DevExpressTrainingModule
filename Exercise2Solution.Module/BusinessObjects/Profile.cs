@@ -84,6 +84,7 @@ namespace Exercise2Solution.Module.BusinessObjects
             }
         }
 
+        [RuleUniqueValue]
         public string EmailAddress
         {
             get { return emailAddress; }

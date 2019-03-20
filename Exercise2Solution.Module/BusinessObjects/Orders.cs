@@ -125,13 +125,7 @@ namespace Exercise2Solution.Module.BusinessObjects
         {
             get
             {
-                object tempObj = EvaluateAlias("TotalOrder");
-
-                if (tempObj != null)
-                {
-                    return ((decimal)tempObj);
-                }
-                else return 0;
+                return (decimal)EvaluateAlias("TotalOrder");
             }
         }
 

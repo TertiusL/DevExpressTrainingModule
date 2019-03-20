@@ -2,8 +2,10 @@
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Xpo;
 using System;
+using DevExpress.Persistent.Validation;
 using System.Linq;
 using Exercise2Solution.Module.BusinessObjects;
+using System.ComponentModel;
 
 namespace Exercise2Solution.Module.BusinessObjects
 {
@@ -15,7 +17,6 @@ namespace Exercise2Solution.Module.BusinessObjects
 
         private TelephoneType telephoneType;
         private string telephoneNumber;
-        private string _extNum;
         private bool active;
         private DateTime dateCreated = DateTime.Now;
         private Profile customer;
@@ -32,61 +33,46 @@ namespace Exercise2Solution.Module.BusinessObjects
             set { SetPropertyValue("Active", ref active, value); }
         }
 
+        [ImmediatePostData]
         public TelephoneType TelephoneType
         {
             get { return telephoneType; }
-            set { telephoneType = value; }
+            set
+            {
+                telephoneType = value;
+                OnChanged("ExtNum");
+            }
         }
 
+        [ImmediatePostData]
         public string TelephoneNumber
         {
             get { return telephoneNumber; }
-            set { SetPropertyValue("TelephoneNumber", ref telephoneNumber, value); }
+            set
+            {
+                if(SetPropertyValue("TelephoneNumber", ref telephoneNumber, value))
+                {
+                    OnChanged("ExtNum");
+                }
+            }
         }
-
+        
+        [PersistentAlias("Iif(TelephoneType = 'W','('+customer.BuildingNumber+')'+ Substring(TelephoneNumber,11),'')")]
         public string ExtNum
         {
-            get { return _extNum; }   
-            set { SetPropertyValue("ExtNum", ref _extNum, value); }
+            get
+            {
+                return (string)EvaluateAlias("ExtNum");
+            }
         }
 
         /** Here we are setting a one to many relationship with 'Profile'. This is the 'one' part*/
+        [Browsable(false)]
         [Association("Profile-Telephone")]
         public Profile Customer
         {
             get { return customer; }
             set { SetPropertyValue("Customer", ref customer, value); }
-        }
-
-        protected override void OnSaving()
-        {
-            string lastDigits;
-
-            switch (TelephoneType)
-            {
-                case TelephoneType.C:
-                    lastDigits = TelephoneNumber.Substring(11);
-                    _extNum = lastDigits;
-                    break;
-
-                case TelephoneType.W:
-                    lastDigits = TelephoneNumber.Substring(11);
-                    _extNum = "(" + Customer.BuildingNumber + ")" + lastDigits;
-                    break;
-
-                case TelephoneType.H:
-                    lastDigits = TelephoneNumber.Substring(11);
-                    _extNum = lastDigits;
-                    break;
-
-                default:
-                    lastDigits = TelephoneNumber.Substring(11);
-                    _extNum = lastDigits;
-                    break;
-            }
-
-
-            base.OnSaving();
-        }
+        }  
     }
 }
