@@ -1,4 +1,5 @@
-﻿using DevExpress.Persistent.Base;
+﻿using DevExpress.Data.Filtering;
+using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.BaseImpl.PermissionPolicy;
 using DevExpress.Persistent.Validation;
@@ -19,13 +20,18 @@ namespace Exercise2Solution.Module.BusinessObjects
     [System.ComponentModel.DefaultProperty("FullName")]    
     public class Profile : PermissionPolicyUser
     {
-        public Profile(Session session) : base(session) { }
+        public Profile(Session session) : base(session)
+        {
+            //EnumProcessingHelper.RegisterEnum(typeof(TelephoneType), "TelephoneType");
+        }
         public override void AfterConstruction()
         {
             base.AfterConstruction();
 
         }
 
+
+        
         private string title;
         private string initials;
         private string surname;
@@ -112,7 +118,7 @@ namespace Exercise2Solution.Module.BusinessObjects
         }
 
         /** Here we are setting a one to many relationship with 'Telephone'. This is the 'many' part*/
-        [Association("Profile-Telephone"), RuleRequiredField(DefaultContexts.Save)]
+        [Association("Profile-Telephone"), RuleRequiredField(DefaultContexts.Save), Aggregated]
         public XPCollection<Telephone> TelephoneNumbers
         {
             get { return GetCollection<Telephone>("TelephoneNumbers"); }

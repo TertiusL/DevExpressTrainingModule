@@ -34,6 +34,8 @@ namespace Exercise2Solution.Module.Web {
         }
         public override void Setup(XafApplication application) {
             base.Setup(application);
+
+            Application.LinkNewObjectToParentImmediately = true;
             //application.CreateCustomModelDifferenceStore += Application_CreateCustomModelDifferenceStore;
             application.CreateCustomUserModelDifferenceStore += Application_CreateCustomUserModelDifferenceStore;
             // Manage various aspects of the application UI and behavior at the module level.

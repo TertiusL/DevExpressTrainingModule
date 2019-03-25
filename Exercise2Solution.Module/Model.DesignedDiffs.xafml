@@ -28,7 +28,7 @@
     <Class Name="Exercise2Solution.Module.BusinessObjects.Telephone">
       <OwnMembers>
         <Member Name="DateCreated" AllowEdit="False" />
-        <Member Name="ExtNum" AllowEdit="False" />
+        <Member Name="ExtNum" AllowEdit="True" />
         <Member Name="TelephoneNumber" EditMask="(00)00-000-0000" DisplayFormat="" EditMaskType="Simple" DataSourceCriteria="" />
       </OwnMembers>
     </Class>
@@ -74,10 +74,12 @@
       <Items>
         <PropertyEditor Id="Amount" DisplayFormat="{0:C}" EditMask="" PropertyEditorType="DevExpress.ExpressApp.Web.Editors.ASPx.ASPxDecimalPropertyEditor" />
         <PropertyEditor Id="UnitPrice" DisplayFormat="{0:C}" EditMask="" />
+        <PropertyEditor Id="VatPerUnit" AllowEdit="False" />
       </Items>
     </DetailView>
     <ListView Id="OrderLines_ListView" AllowLink="False" AllowUnlink="False">
       <Columns>
+        <ColumnInfo Id="VatPerUnit" AllowEdit="False" />
         <ColumnInfo Id="UnitPrice" DisplayFormat="{0:C}" EditMask="" />
         <ColumnInfo Id="Amount" DisplayFormat="{0:C}" EditMask="" />
         <ColumnInfo Id="Order" AllowEdit="False" AllowClear="False" View="" />
@@ -129,7 +131,11 @@
     </ListView>
     <ListView Id="Profile_LookupListView" AllowUnlink="False" AllowLink="False" />
     <ListView Id="Profile_TelephoneNumbers_ListView" AllowLink="False" AllowUnlink="False" />
-    <ListView Id="Telephone_ListView" AllowLink="False" AllowUnlink="False" />
+    <ListView Id="Telephone_ListView" AllowLink="False" AllowUnlink="False">
+      <Columns>
+        <ColumnInfo Id="ExtNum" AllowEdit="True" />
+      </Columns>
+    </ListView>
     <ListView Id="Telephone_LookupListView" AllowLink="False" AllowUnlink="False" />
   </Views>
 </Application>

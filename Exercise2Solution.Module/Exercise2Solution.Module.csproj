@@ -50,6 +50,7 @@
     <Reference Include="DevExpress.Charts.v16.2.Core, Version=16.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.CodeParser.v16.2, Version=16.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.DataAccess.v16.2, Version=16.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.ExpressApp.ConditionalAppearance.v16.2, Version=16.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.ExpressApp.Objects.v16.2, Version=16.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
@@ -130,6 +131,12 @@
     <Compile Include="Controllers\OrderStatusController.Designer.cs">
       <DependentUpon>OrderStatusController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\TelephoneListViewController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\TelephoneListViewController.Designer.cs">
+      <DependentUpon>TelephoneListViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseUpdate\Updater.cs" />
     <Compile Include="Module.cs">
       <SubType>Component</SubType>
@@ -144,6 +151,7 @@
     <Compile Include="Reports\PastOrdersReport.Designer.cs">
       <DependentUpon>PastOrdersReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="ValidateExtNumOperator.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Controllers\OrderStatusController.resx">

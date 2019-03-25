@@ -42,14 +42,14 @@
         <LayoutGroup Id="Main" RelativeSize="100">
           <LayoutGroup Id="SimpleEditors" RelativeSize="100">
             <LayoutGroup Id="Telephone" RelativeSize="100">
-              <LayoutGroup Id="Telephone_col1" RelativeSize="50">
-                <LayoutItem Id="DateCreated" RelativeSize="4.9645390070921982" />
-                <LayoutItem Id="Active" RelativeSize="3.4042553191489362" />
-                <LayoutItem Id="TelephoneType" RelativeSize="91.63120567375887" />
+              <LayoutGroup Id="Telephone_col1" RelativeSize="50.070323488045005">
+                <LayoutItem Id="DateCreated" RelativeSize="7.326732673267327" />
+                <LayoutItem Id="Active" RelativeSize="4.7524752475247523" />
+                <LayoutItem Id="TelephoneType" RelativeSize="87.920792079207928" />
               </LayoutGroup>
-              <LayoutGroup Id="Telephone_col2" Caption="Telephone_col2" RelativeSize="50">
-                <LayoutItem Id="TelephoneNumber" RelativeSize="100" />
-                <LayoutItem Id="ExtNum" Removed="True" />
+              <LayoutGroup Id="Telephone_col2" Caption="Telephone_col2" RelativeSize="49.929676511954995">
+                <LayoutItem Id="TelephoneNumber" RelativeSize="7.1287128712871288" Index="0" />
+                <LayoutItem Id="ExtNum" ViewItem="ExtNum" Index="1" RelativeSize="92.871287128712865" IsNewNode="True" Removed="True" />
               </LayoutGroup>
             </LayoutGroup>
           </LayoutGroup>

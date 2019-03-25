@@ -145,7 +145,7 @@ namespace Exercise2Solution.Module.BusinessObjects
                 orderList = OrderLine.ToList();
             }
 
-            decimal totalVatableWithVat = orderList.Where(w => w.OrderItem.Vatable == true).Sum(s => (s.OrderItem.Price * s.Quantity)) * ((decimal)0.15);
+            decimal totalVatableWithVat = orderList.Where(w => w.OrderItem.Vatable == true).Sum(s => (s.OrderItem.Price * s.Quantity) * (s.OrderItem.AppliedVat)/100);
 
             decimal totalVatableWithoutVat = orderList.Where(w => w.OrderItem.Vatable == true).Sum(s => (s.OrderItem.Price * s.Quantity));
 

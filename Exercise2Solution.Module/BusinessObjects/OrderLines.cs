@@ -24,6 +24,7 @@ namespace Exercise2Solution.Module.BusinessObjects
         private Meals orderItem;
         private int quantity;
         private decimal unitPrice;
+        private int _vatPerUnit;
 
         [ImmediatePostData]
         public Meals OrderItem
@@ -34,9 +35,16 @@ namespace Exercise2Solution.Module.BusinessObjects
                 if (SetPropertyValue("OrderItem", ref orderItem, value) && !IsLoading && !IsSaving)
                 {
                     unitPrice = OrderItem.Price;
+                    _vatPerUnit = OrderItem.AppliedVat;
                     Quantity = 1;
                 }
             }
+        }
+
+        public int VatPerUnit
+        {
+            get { return _vatPerUnit; }
+            set { SetPropertyValue("VatPerUnit", ref _vatPerUnit, value); }
         }
 
         [ImmediatePostData, RuleRange(1, 10, CustomMessageTemplate = "Has to be between 1 and 10.")]
