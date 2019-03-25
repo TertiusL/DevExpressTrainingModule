@@ -24,7 +24,7 @@ namespace Exercise2Solution.Module.BusinessObjects
         private Meals orderItem;
         private int quantity;
         private decimal unitPrice;
-        private int _vatPerUnit;
+        private decimal _vatPerUnit;
 
         [ImmediatePostData]
         public Meals OrderItem
@@ -41,7 +41,7 @@ namespace Exercise2Solution.Module.BusinessObjects
             }
         }
 
-        public int VatPerUnit
+        public decimal VatPerUnit
         {
             get { return _vatPerUnit; }
             set { SetPropertyValue("VatPerUnit", ref _vatPerUnit, value); }

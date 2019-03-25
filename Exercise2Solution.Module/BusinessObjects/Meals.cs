@@ -18,9 +18,9 @@ namespace Exercise2Solution.Module.BusinessObjects
         private decimal price;
         private bool vatable;
         private bool deliverable;
-        private int _appliedVat;
+        private decimal _appliedVat;
 
-        public int AppliedVat
+        public decimal AppliedVat
         {
             get { return _appliedVat; }
             set { SetPropertyValue("AppliedVat", ref _appliedVat, value); }
