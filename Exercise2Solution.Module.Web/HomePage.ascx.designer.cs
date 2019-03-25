@@ -7,30 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Exercise2Solution.Module.Web
-{
-
-    public partial class HomePage
-    {
-
-        /// <summary>
-        /// LogoLink control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink LogoLink;
-
-        /// <summary>
-        /// TIC control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.ExpressApp.Web.Controls.ThemedImageControl TIC;
-
+namespace Exercise2Solution.Module.Web {
+    
+    
+    public partial class HomePage {
+        
         /// <summary>
         /// UPPopupWindowControl control.
         /// </summary>
@@ -39,7 +20,7 @@ namespace Exercise2Solution.Module.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.ExpressApp.Web.Templates.XafUpdatePanel UPPopupWindowControl;
-
+        
         /// <summary>
         /// PopupWindowControl control.
         /// </summary>
@@ -48,7 +29,25 @@ namespace Exercise2Solution.Module.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.ExpressApp.Web.Controls.XafPopupWindowControl PopupWindowControl;
-
+        
+        /// <summary>
+        /// LogoLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink LogoLink;
+        
+        /// <summary>
+        /// TIC control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.ExpressApp.Web.Controls.ThemedImageControl TIC;
+        
         /// <summary>
         /// UPSAC control.
         /// </summary>
@@ -57,7 +56,7 @@ namespace Exercise2Solution.Module.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.ExpressApp.Web.Templates.XafUpdatePanel UPSAC;
-
+        
         /// <summary>
         /// SAC control.
         /// </summary>
@@ -66,7 +65,7 @@ namespace Exercise2Solution.Module.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.ExpressApp.Web.Templates.ActionContainers.ActionContainerHolder SAC;
-
+        
         /// <summary>
         /// navigation control.
         /// </summary>
@@ -75,7 +74,7 @@ namespace Exercise2Solution.Module.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel navigation;
-
+        
         /// <summary>
         /// UPNC control.
         /// </summary>
@@ -84,7 +83,7 @@ namespace Exercise2Solution.Module.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.ExpressApp.Web.Templates.XafUpdatePanel UPNC;
-
+        
         /// <summary>
         /// NC control.
         /// </summary>
@@ -93,7 +92,7 @@ namespace Exercise2Solution.Module.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.ExpressApp.Web.Templates.ActionContainers.NavigationActionContainer NC;
-
+        
         /// <summary>
         /// UPVIC control.
         /// </summary>
@@ -102,7 +101,7 @@ namespace Exercise2Solution.Module.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.ExpressApp.Web.Templates.XafUpdatePanel UPVIC;
-
+        
         /// <summary>
         /// VIC control.
         /// </summary>
@@ -111,7 +110,7 @@ namespace Exercise2Solution.Module.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.ExpressApp.Web.Controls.ViewImageControl VIC;
-
+        
         /// <summary>
         /// UPVH control.
         /// </summary>
@@ -120,7 +119,7 @@ namespace Exercise2Solution.Module.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.ExpressApp.Web.Templates.XafUpdatePanel UPVH;
-
+        
         /// <summary>
         /// VCC control.
         /// </summary>
@@ -129,7 +128,7 @@ namespace Exercise2Solution.Module.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.ExpressApp.Web.Controls.ViewCaptionControl VCC;
-
+        
         /// <summary>
         /// XafUpdatePanel1 control.
         /// </summary>
@@ -138,7 +137,7 @@ namespace Exercise2Solution.Module.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.ExpressApp.Web.Templates.XafUpdatePanel XafUpdatePanel1;
-
+        
         /// <summary>
         /// mainMenu control.
         /// </summary>
@@ -147,7 +146,7 @@ namespace Exercise2Solution.Module.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.ExpressApp.Web.Templates.ActionContainers.ActionContainerHolder mainMenu;
-
+        
         /// <summary>
         /// XafUpdatePanel2 control.
         /// </summary>
@@ -156,7 +155,7 @@ namespace Exercise2Solution.Module.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.ExpressApp.Web.Templates.XafUpdatePanel XafUpdatePanel2;
-
+        
         /// <summary>
         /// SearchAC control.
         /// </summary>
@@ -165,7 +164,7 @@ namespace Exercise2Solution.Module.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.ExpressApp.Web.Templates.ActionContainers.ActionContainerHolder SearchAC;
-
+        
         /// <summary>
         /// UPEI control.
         /// </summary>
@@ -174,7 +173,7 @@ namespace Exercise2Solution.Module.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.ExpressApp.Web.Templates.XafUpdatePanel UPEI;
-
+        
         /// <summary>
         /// ErrorInfo control.
         /// </summary>
@@ -183,7 +182,7 @@ namespace Exercise2Solution.Module.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.ExpressApp.Web.Templates.Controls.ErrorInfoControl ErrorInfo;
-
+        
         /// <summary>
         /// UPVSC control.
         /// </summary>
@@ -192,7 +191,7 @@ namespace Exercise2Solution.Module.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.ExpressApp.Web.Templates.XafUpdatePanel UPVSC;
-
+        
         /// <summary>
         /// VSC control.
         /// </summary>
@@ -201,7 +200,7 @@ namespace Exercise2Solution.Module.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.ExpressApp.Web.Controls.ViewSiteControl VSC;
-
+        
         /// <summary>
         /// AIC control.
         /// </summary>

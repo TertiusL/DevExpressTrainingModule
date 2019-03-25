@@ -95,6 +95,7 @@ namespace Exercise2Solution.Module.BusinessObjects
                     _firstValue = _extNum.Substring(0, 1);
 
                     string z = Customer != null ? Customer.BuildingNumber.ToString() : null;
+
                     if (_firstValue == z)
                     {
                         return true;

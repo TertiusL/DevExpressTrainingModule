@@ -57,6 +57,9 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>CantinaIco.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.ExpressApp.Reports.v16.2, Version=16.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.ExpressApp.Reports.Web.v16.2, Version=16.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -186,9 +189,11 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CantinaIco.ico" />
     <Content Include="HomePage.ascx">
       <SubType>ASPXCodeBehind</SubType>
     </Content>
+    <EmbeddedResource Include="Images\Logo.png" />
     <Content Include="LoginPage.ascx">
       <SubType>ASPXCodeBehind</SubType>
     </Content>

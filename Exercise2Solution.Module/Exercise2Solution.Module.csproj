@@ -198,6 +198,7 @@
     <EmbeddedResource Include="Images\OrderLine_32x32.png" />
     <EmbeddedResource Include="Images\Orders.png" />
     <EmbeddedResource Include="Images\Orders_32x32.png" />
+    <EmbeddedResource Include="Images\Logo.png" />
     <Content Include="Welcome.html" />
   </ItemGroup>
   <ItemGroup />
