@@ -1,6 +1,4 @@
-﻿using DevExpress.Data.Filtering;
-using DevExpress.Persistent.Base;
-using DevExpress.Persistent.BaseImpl;
+﻿using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl.PermissionPolicy;
 using DevExpress.Persistent.Validation;
 using DevExpress.Xpo;
@@ -17,7 +15,7 @@ namespace Exercise2Solution.Module.BusinessObjects
     }
 
     [DefaultClassOptions, ImageName("Profile")]
-    [System.ComponentModel.DefaultProperty("FullName")]    
+    [System.ComponentModel.DefaultProperty("FullName")]
     public class Profile : PermissionPolicyUser
     {
         public Profile(Session session) : base(session)
@@ -31,7 +29,7 @@ namespace Exercise2Solution.Module.BusinessObjects
         }
 
 
-        
+
         private string title;
         private string initials;
         private string surname;

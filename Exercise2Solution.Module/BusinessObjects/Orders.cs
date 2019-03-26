@@ -28,7 +28,7 @@ namespace Exercise2Solution.Module.BusinessObjects
         public override void AfterConstruction()
         {
             base.AfterConstruction();
-            createdBy = Session.GetObjectByKey<PermissionPolicyUser>(SecuritySystem.CurrentUserId);
+            createdBy = Session.GetObjectByKey<Profile>(SecuritySystem.CurrentUserId);
         }
 
         private DateTime order = DateTime.Now;
@@ -37,21 +37,15 @@ namespace Exercise2Solution.Module.BusinessObjects
         private Status status;
         private decimal totalVat;
         private decimal totalExclVat;
-        PermissionPolicyUser createdBy;
-        private Profile _orderedBy;
+        Profile createdBy;
 
         private DateTime _currentTime
         {
             get { return DateTime.Now; }
         }
-        
-        public Profile OrderedBy
-        {
-            get { return _orderedBy; }
-            set { SetPropertyValue("OrderedBy", ref _orderedBy, value); }
-        }
-        
-        public PermissionPolicyUser CreatedBy
+
+        [ModelDefault("Caption", "Ordered By")]
+        public Profile CreatedBy
         {
             get { return createdBy; }
             set
