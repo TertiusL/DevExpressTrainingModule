@@ -1,23 +1,18 @@
-﻿using DevExpress.Persistent.Base;
-using DevExpress.Persistent.BaseImpl;
-using DevExpress.Xpo;
-using System;
-using DevExpress.Persistent.Validation;
-using System.Linq;
-using Exercise2Solution.Module.BusinessObjects;
-using System.ComponentModel;
-using DevExpress.Data.Filtering;
-using DevExpress.ExpressApp.ConditionalAppearance;
+﻿using DevExpress.ExpressApp.ConditionalAppearance;
 using DevExpress.ExpressApp.Editors;
 using DevExpress.ExpressApp.Model;
+using DevExpress.Persistent.Base;
+using DevExpress.Persistent.BaseImpl;
+using DevExpress.Persistent.Validation;
+using DevExpress.Xpo;
+using System;
+using System.ComponentModel;
+using System.Linq;
 
 namespace Exercise2Solution.Module.BusinessObjects
 {
-
-
     [DefaultClassOptions, ImageName("Telephone")]
-    [RuleCriteria("CheckExtLenAndType", DefaultContexts.Save, "[TelephoneType] == ##Enum#Exercise2Solution.Module.BusinessObjects.TelephoneType,W# AND Len(ExtNum) == 4 ", CustomMessageTemplate = "Work ExtensionNumber has to be 4 digits.")]
-    [RuleCriteria("Checasdasd", DefaultContexts.Save, "IsValid", CustomMessageTemplate = "IsValid thingy")]
+    [RuleCriteria("CheckExtLenAndType", DefaultContexts.Save, "[TelephoneType] = ##Enum#Exercise2Solution.Module.BusinessObjects.TelephoneType,W# AND Len(ExtNum) = 4 AND IsValid", CustomMessageTemplate = "Work ExtensionNumber has to be 4 digits.")]
     public class Telephone : BaseObject
     {
         public Telephone(Session session) : base(session) { }
@@ -83,36 +78,41 @@ namespace Exercise2Solution.Module.BusinessObjects
             set { SetPropertyValue("Customer", ref customer, value); }
         }
 
-        [RuleFromBoolProperty("IsValidExtNumber", DefaultContexts.Save,"ExtNumber has to start with the user's building number.")]
+        [RuleFromBoolProperty("IsValidExtNumber", DefaultContexts.Save, "ExtNumber has to start with the user's building number.")]
         [NonPersistent]
         [Browsable(false)]
         public bool IsValid
         {
             get
             {
-                if (_extNum.Length == 4)
+                if(TelephoneType == TelephoneType.W)
                 {
-                    _firstValue = _extNum.Substring(0, 1);
-
-                    string z = Customer != null ? Customer.BuildingNumber.ToString() : null;
-
-                    if (_firstValue == z)
+                    if (_extNum.Length == 4)
                     {
-                        return true;
+                        _firstValue = _extNum.Substring(0, 1);
+
+                        string z = Customer != null ? Customer.BuildingNumber.ToString() : null;
+
+                        if (_firstValue == z)
+                        {
+                            return true;
+                        }
+                        return false;
                     }
+                    return false;
                 }
-                return false;
+                return true;
             }
         }
 
-        public bool testStuff( bool thingy)
+        public bool testStuff(bool thingy)
         {
             return thingy;
         }
 
         protected override void OnSaving()
-        {            
-            if(Customer == null)
+        {
+            if (Customer == null)
             {
 
             }

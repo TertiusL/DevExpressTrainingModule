@@ -56,6 +56,19 @@
     </Rules>
   </Validation>
   <Views>
+    <ListView Id="AdminOrderGroupView" ClassName="Exercise2Solution.Module.BusinessObjects.Orders" IsNewNode="True">
+      <Columns IsNewNode="True">
+        <ColumnInfo Id="CreatedBy" PropertyName="CreatedBy" Index="0" Width="400" SortIndex="-1" SortOrder="None" IsNewNode="True" />
+        <ColumnInfo Id="OrderedBy" PropertyName="OrderedBy" Index="1" Width="70" IsNewNode="True" />
+        <ColumnInfo Id="Order" PropertyName="Order" Index="2" Width="121" SortIndex="-1" SortOrder="Ascending" GroupIndex="0" IsNewNode="True" />
+        <ColumnInfo Id="Delivery" PropertyName="Delivery" Index="3" Width="70" IsNewNode="True" />
+        <ColumnInfo Id="Delivered" PropertyName="Delivered" Index="4" Width="70" IsNewNode="True" />
+        <ColumnInfo Id="Status" PropertyName="Status" Index="5" Width="70" IsNewNode="True" />
+        <ColumnInfo Id="TotalExclVat" PropertyName="TotalExclVat" Index="6" Width="50" IsNewNode="True" />
+        <ColumnInfo Id="TotalVat" PropertyName="TotalVat" Index="7" Width="50" IsNewNode="True" />
+        <ColumnInfo Id="TotalOrder" PropertyName="TotalOrder" Index="8" Width="50" IsNewNode="True" />
+      </Columns>
+    </ListView>
     <DetailView Id="Department_DetailView" AllowEdit="True" />
     <ListView Id="Department_ListView" AllowEdit="False" AllowLink="False" AllowUnlink="False" MasterDetailMode="ListViewOnly" />
     <ListView Id="Department_LookupListView" AllowEdit="False" AllowLink="False" AllowNew="True" AllowUnlink="False" />
@@ -131,11 +144,11 @@
     </ListView>
     <ListView Id="Profile_LookupListView" AllowUnlink="False" AllowLink="False" />
     <ListView Id="Profile_TelephoneNumbers_ListView" AllowLink="False" AllowUnlink="False" />
-    <ListView Id="Telephone_ListView" AllowLink="False" AllowUnlink="False">
+    <ListView Id="Telephone_ListView" AllowLink="False" AllowUnlink="False" AllowEdit="False" MasterDetailMode="ListViewOnly">
       <Columns>
         <ColumnInfo Id="ExtNum" AllowEdit="True" />
       </Columns>
     </ListView>
-    <ListView Id="Telephone_LookupListView" AllowLink="False" AllowUnlink="False" />
+    <ListView Id="Telephone_LookupListView" AllowLink="False" AllowUnlink="False" InlineEditMode="Inline" AllowEdit="True" MasterDetailMode="ListViewOnly" DataAccessMode="Client" DetailRowMode="DetailView" NewItemRowPosition="Top" PreviewColumnName="TelephoneNumber" />
   </Views>
 </Application>
