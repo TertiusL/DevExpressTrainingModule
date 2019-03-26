@@ -37,6 +37,7 @@
         <PropertyEditor Id="Amount" PropertyEditorType="Exercise2Solution.Module.Web.Editors.CurrencyPropertyEditor" />
       </Items>
     </DetailView>
+    <ListView Id="Profile_TelephoneNumbers_ListView" NewItemRowPosition="Top" EditorTypeName="" AllowEdit="True" />
     <DetailView Id="Telephone_DetailView">
       <Layout>
         <LayoutGroup Id="Main" RelativeSize="100">
@@ -56,5 +57,7 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
+    <ListView Id="Telephone_ListView" InlineEditMode="Inline" />
+    <ListView Id="Telephone_LookupListView" DetailRowMode="DetailView" MasterDetailMode="ListViewOnly" EditorTypeName="" />
   </Views>
 </Application>

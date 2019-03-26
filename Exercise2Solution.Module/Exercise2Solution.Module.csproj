@@ -208,6 +208,10 @@
     <EmbeddedResource Include="Images\Orders.png" />
     <EmbeddedResource Include="Images\Orders_32x32.png" />
     <EmbeddedResource Include="Images\Logo.png" />
+    <None Include="UnusableNodes.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="Welcome.html" />
   </ItemGroup>
   <ItemGroup />
