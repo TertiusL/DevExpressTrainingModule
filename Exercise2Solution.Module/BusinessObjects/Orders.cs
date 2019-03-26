@@ -21,7 +21,7 @@ namespace Exercise2Solution.Module.BusinessObjects
     }
 
     [DefaultClassOptions, ImageName("Orders")]
-    [System.ComponentModel.DefaultProperty("CreatedBy")]
+    [System.ComponentModel.DefaultProperty("CreatedBy")]    
     public class Orders : BaseObject
     {
         public Orders(Session session) : base(session) { }
@@ -39,6 +39,11 @@ namespace Exercise2Solution.Module.BusinessObjects
         private decimal totalExclVat;
         PermissionPolicyUser createdBy;
         private Profile _orderedBy;
+
+        private DateTime _currentTime
+        {
+            get { return DateTime.Now; }
+        }
         
         public Profile OrderedBy
         {
@@ -61,13 +66,13 @@ namespace Exercise2Solution.Module.BusinessObjects
             set { SetPropertyValue("Order", ref order, value); }
         }
 
+        [Appearance("PriorityBackColorPink", AppearanceItemType = "ViewItem", Context = "Any", Criteria = "Delivered IS NULL AND Delivery < _currentTime", BackColor = "255, 116, 101")]
         public DateTime Delivery
         {
             get { return delivery; }
             set { SetPropertyValue("Delivery", ref delivery, value); }
         }
-
-        //[Appearance("PriorityBackColorPink", AppearanceItemType = "ViewItem", Context = "Any", Criteria = "Delivered == null AND Delivery < DateTime.Now", BackColor = "255, 240, 240")]
+        
         public DateTime Delivered
         {
             get { return delivered; }

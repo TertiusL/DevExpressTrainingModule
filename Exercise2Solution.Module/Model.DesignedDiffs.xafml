@@ -72,6 +72,7 @@
     <DetailView Id="Department_DetailView" AllowEdit="True" />
     <ListView Id="Department_ListView" AllowEdit="False" AllowLink="False" AllowUnlink="False" MasterDetailMode="ListViewOnly" />
     <ListView Id="Department_LookupListView" AllowEdit="False" AllowLink="False" AllowNew="True" AllowUnlink="False" />
+    <ListView Id="Department_Members_ListView" AllowNew="False" AllowEdit="False" AllowLink="True" />
     <DetailView Id="Meals_DetailView">
       <Items>
         <PropertyEditor Id="Price" DisplayFormat="{0:C}" />
