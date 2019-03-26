@@ -97,6 +97,7 @@ namespace Exercise2Solution.Module.BusinessObjects
             set { SetPropertyValue("EmailAddress", ref emailAddress, value); }
         }
 
+        [Association("Department-Profile")]
         public Department Department
         {
             get { return department; }

@@ -22,7 +22,6 @@ namespace Exercise2Solution.Module.BusinessObjects
 
     [DefaultClassOptions, ImageName("Orders")]
     [System.ComponentModel.DefaultProperty("CreatedBy")]
-    //[RuleCriteria("RuleCriteria for OrdersOrderLine", DefaultContexts.Save, "OrderLine > 0", CustomMessageTemplate = "Atleast one OrderLine needs to exist to create an order")]
     public class Orders : BaseObject
     {
         public Orders(Session session) : base(session) { }
