@@ -33,11 +33,12 @@
       </OwnMembers>
     </Class>
   </BOModel>
-  <NavigationItems StartupNavigationItem="Profile_ListView">
+  <NavigationItems GenerateRelatedViewVariantsGroup="True" DefaultChildItemsDisplayStyle="LargeIcons" NavigationStyle="NavBar" GenerateRelatedReportsGroup="True" StartupNavigationItem="Profile_ListView">
     <Items>
-      <Item Id="Default">
+      <Item Id="Default" QuickAccessItem="True">
         <Items>
           <Item Id="OrderLines_ListView" Visible="False" />
+          <Item Id="Orders_ListView" QuickAccessItem="True" ViewId="AdminOrderGrouping_ListView_Varied" />
           <Item Id="Telephone_ListView" Visible="False" />
         </Items>
       </Item>
@@ -56,17 +57,23 @@
     </Rules>
   </Validation>
   <Views>
-    <ListView Id="AdminOrderGroupView" ClassName="Exercise2Solution.Module.BusinessObjects.Orders" IsNewNode="True">
+    <ListView Id="AdminOrderGrouping_ListView_All" ClassName="Exercise2Solution.Module.BusinessObjects.Orders" EditorTypeName="DevExpress.ExpressApp.Web.Editors.ASPx.ASPxGridListEditor" IsNewNode="True">
       <Columns IsNewNode="True">
-        <ColumnInfo Id="CreatedBy" PropertyName="CreatedBy" Index="0" Width="400" SortIndex="-1" SortOrder="None" IsNewNode="True" />
-        <ColumnInfo Id="Order" PropertyName="Order" Index="2" Width="121" SortIndex="-1" SortOrder="Ascending" GroupIndex="0" IsNewNode="True" />
-        <ColumnInfo Id="Delivery" PropertyName="Delivery" Index="3" Width="70" IsNewNode="True" />
-        <ColumnInfo Id="Delivered" PropertyName="Delivered" Index="4" Width="70" IsNewNode="True" />
-        <ColumnInfo Id="Status" PropertyName="Status" Index="5" Width="70" IsNewNode="True" />
-        <ColumnInfo Id="TotalExclVat" PropertyName="TotalExclVat" Index="6" Width="50" IsNewNode="True" />
-        <ColumnInfo Id="TotalVat" PropertyName="TotalVat" Index="7" Width="50" IsNewNode="True" />
-        <ColumnInfo Id="TotalOrder" PropertyName="TotalOrder" Index="8" Width="50" IsNewNode="True" />
+        <ColumnInfo Id="CreatedBy" PropertyName="CreatedBy" Index="0" Width="400" SortIndex="0" SortOrder="Ascending" IsNewNode="True" />
+        <ColumnInfo Id="Order" PropertyName="Order" Index="1" Width="70" IsNewNode="True" />
+        <ColumnInfo Id="Delivery" PropertyName="Delivery" Index="2" Width="70" IsNewNode="True" />
+        <ColumnInfo Id="Delivered" PropertyName="Delivered" Index="3" Width="70" IsNewNode="True" />
+        <ColumnInfo Id="Status" PropertyName="Status" Index="4" Width="70" IsNewNode="True" />
+        <ColumnInfo Id="TotalExclVat" PropertyName="TotalExclVat" Index="5" Width="50" IsNewNode="True" />
+        <ColumnInfo Id="TotalVat" PropertyName="TotalVat" Index="6" Width="50" IsNewNode="True" />
+        <ColumnInfo Id="TotalOrder" PropertyName="TotalOrder" Index="7" Width="50" IsNewNode="True" />
       </Columns>
+    </ListView>
+    <ListView Id="AdminOrderGrouping_ListView_Varied" ClassName="Exercise2Solution.Module.BusinessObjects.Orders" EditorTypeName="DevExpress.ExpressApp.Web.Editors.ASPx.ASPxGridListEditor" IsNewNode="True">
+      <Variants IsNewNode="True">
+        <Variant Id="Orders Grouped" Caption="Orders Grouped" ViewID="Orders_ListView" IsNewNode="True" />
+        <Variant Id="Orders Ungrouped" Caption="Orders Ungrouped" ViewID="AdminOrderGrouping_ListView_All" IsNewNode="True" />
+      </Variants>
     </ListView>
     <DetailView Id="Department_DetailView" AllowEdit="True" />
     <ListView Id="Department_ListView" AllowEdit="False" AllowLink="False" AllowUnlink="False" MasterDetailMode="ListViewOnly" />
@@ -144,7 +151,7 @@
     </ListView>
     <ListView Id="Profile_LookupListView" AllowUnlink="False" AllowLink="False" />
     <ListView Id="Profile_TelephoneNumbers_ListView" AllowLink="False" AllowUnlink="False" />
-    <ListView Id="Telephone_ListView" AllowLink="False" AllowUnlink="False" AllowEdit="True" MasterDetailMode="ListViewOnly" NewItemRowPosition="Top" EditorTypeName="" InlineEditMode="Inline">
+    <ListView Id="Telephone_ListView" AllowLink="False" AllowUnlink="False" AllowEdit="True" MasterDetailMode="ListViewOnly" NewItemRowPosition="Top" InlineEditMode="Inline" EditorTypeName="">
       <Columns>
         <ColumnInfo Id="ExtNum" AllowEdit="True" />
       </Columns>

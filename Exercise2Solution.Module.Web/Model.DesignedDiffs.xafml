@@ -32,6 +32,22 @@
     <SchemaModule Name="SystemModule" Version="16.2.7.0" IsNewNode="True" />
   </SchemaModules>
   <Views>
+    <ListView Id="AdminOrderGrouping_ListView_Varied">
+      <Columns>
+        <ColumnInfo Id="CreatedBy" PropertyName="CreatedBy" Index="0" Width="400" SortIndex="0" SortOrder="Ascending" IsNewNode="True" />
+        <ColumnInfo Id="Order" PropertyName="Order" Index="1" Width="70" SortOrder="Ascending" GroupIndex="0" IsNewNode="True" />
+        <ColumnInfo Id="Delivery" PropertyName="Delivery" Index="2" Width="70" IsNewNode="True" />
+        <ColumnInfo Id="Delivered" PropertyName="Delivered" Index="3" Width="70" IsNewNode="True" />
+        <ColumnInfo Id="Status" PropertyName="Status" Index="4" Width="70" IsNewNode="True" />
+        <ColumnInfo Id="TotalExclVat" PropertyName="TotalExclVat" Index="5" Width="50" IsNewNode="True" />
+        <ColumnInfo Id="TotalVat" PropertyName="TotalVat" Index="6" Width="50" IsNewNode="True" />
+        <ColumnInfo Id="TotalOrder" PropertyName="TotalOrder" Index="7" Width="50" IsNewNode="True" />
+      </Columns>
+      <Variants>
+        <Variant Id="Orders Grouped" ViewID="AdminOrderGrouping_ListView_Varied" />
+      </Variants>
+    </ListView>
+    <ListView Id="AdminOrderGroupView" Removed="True" />
     <DetailView Id="OrderLines_DetailView">
       <Items>
         <PropertyEditor Id="Amount" PropertyEditorType="Exercise2Solution.Module.Web.Editors.CurrencyPropertyEditor" />

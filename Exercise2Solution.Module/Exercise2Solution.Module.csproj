@@ -66,6 +66,7 @@
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="DevExpress.ExpressApp.Validation.Web.v16.2, Version=16.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.ExpressApp.ViewVariantsModule.v16.2, Version=16.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.ExpressApp.Web.v16.2, Version=16.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.ExpressApp.Xpo.v16.2">
       <SpecificVersion>False</SpecificVersion>
@@ -125,12 +126,6 @@
     <Compile Include="BusinessObjects\Orders.cs" />
     <Compile Include="BusinessObjects\Profile.cs" />
     <Compile Include="BusinessObjects\Telephone.cs" />
-    <Compile Include="Controllers\AdminGroupOrdersController.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controllers\AdminGroupOrdersController.Designer.cs">
-      <DependentUpon>AdminGroupOrdersController.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\OrderStatusController.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -160,9 +155,6 @@
     <Compile Include="ValidateExtNumOperator.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Controllers\AdminGroupOrdersController.resx">
-      <DependentUpon>AdminGroupOrdersController.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Controllers\OrderStatusController.resx">
       <DependentUpon>OrderStatusController.cs</DependentUpon>
     </EmbeddedResource>
