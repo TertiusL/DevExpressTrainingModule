@@ -6,6 +6,7 @@ using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl.PermissionPolicy;
 using Exercise2Solution.Module.BusinessObjects;
 using System;
+using DevExpress.ExpressApp.ViewVariantsModule;
 using System.Linq;
 
 namespace Exercise2Solution.Module.DatabaseUpdate

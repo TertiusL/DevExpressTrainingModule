@@ -105,17 +105,8 @@ namespace Exercise2Solution.Module.BusinessObjects
             }
         }
 
-        public bool testStuff(bool thingy)
-        {
-            return thingy;
-        }
-
         protected override void OnSaving()
         {
-            if (Customer == null)
-            {
-
-            }
 
             base.OnSaving();
         }

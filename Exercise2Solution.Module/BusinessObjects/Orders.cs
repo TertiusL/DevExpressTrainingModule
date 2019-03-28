@@ -32,7 +32,7 @@ namespace Exercise2Solution.Module.BusinessObjects
         }
 
         private DateTime order = DateTime.Now;
-        private DateTime delivery;
+        private DateTime delivery = DateTime.Now.AddDays(1);
         private DateTime delivered;
         private Status status;
         private decimal totalVat;

@@ -1,5 +1,6 @@
 ﻿using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.DC;
+using DevExpress.ExpressApp.Model;
 using DevExpress.ExpressApp.ReportsV2;
 using DevExpress.ExpressApp.Updating;
 using DevExpress.ExpressApp.Xpo;

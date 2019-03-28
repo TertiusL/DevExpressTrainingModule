@@ -126,6 +126,12 @@
     <Compile Include="BusinessObjects\Orders.cs" />
     <Compile Include="BusinessObjects\Profile.cs" />
     <Compile Include="BusinessObjects\Telephone.cs" />
+    <Compile Include="Controllers\AdminViewVariantController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\AdminViewVariantController.Designer.cs">
+      <DependentUpon>AdminViewVariantController.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\OrderStatusController.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -155,6 +161,9 @@
     <Compile Include="ValidateExtNumOperator.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controllers\AdminViewVariantController.resx">
+      <DependentUpon>AdminViewVariantController.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controllers\OrderStatusController.resx">
       <DependentUpon>OrderStatusController.cs</DependentUpon>
     </EmbeddedResource>

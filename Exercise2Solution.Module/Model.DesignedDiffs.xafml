@@ -18,6 +18,9 @@
       </OwnMembers>
     </Class>
     <Class Name="Exercise2Solution.Module.BusinessObjects.Orders">
+      <AppearanceRules>
+        <AppearanceRule Id="PriorityBackColorPink" TargetItems="*" />
+      </AppearanceRules>
       <OwnMembers>
         <Member Name="CreatedBy" AllowEdit="False" />
         <Member Name="TotalExclVat" EditMaskType="RegEx" EditMask="" AllowEdit="False" DisplayFormat="{0:C}" PropertyEditorType="DevExpress.ExpressApp.Web.Editors.ASPx.ASPxDecimalPropertyEditor" />
@@ -33,12 +36,13 @@
       </OwnMembers>
     </Class>
   </BOModel>
-  <NavigationItems GenerateRelatedViewVariantsGroup="True" DefaultChildItemsDisplayStyle="LargeIcons" NavigationStyle="NavBar" GenerateRelatedReportsGroup="True" StartupNavigationItem="Profile_ListView">
+  <NavigationItems GenerateRelatedViewVariantsGroup="True" DefaultChildItemsDisplayStyle="LargeIcons" NavigationStyle="TreeList" GenerateRelatedReportsGroup="True" StartupNavigationItem="Profile_ListView">
     <Items>
       <Item Id="Default" QuickAccessItem="True">
         <Items>
           <Item Id="OrderLines_ListView" Visible="False" />
-          <Item Id="Orders_ListView" QuickAccessItem="True" ViewId="AdminOrderGrouping_ListView_Varied" />
+          <Item Id="OrderNot" ViewId="Orders_ListView_NotAdmin" IsNewNode="True" />
+          <Item Id="Orders_ListView" QuickAccessItem="True" ViewId="Orders_ListView" />
           <Item Id="Telephone_ListView" Visible="False" />
         </Items>
       </Item>
@@ -57,7 +61,7 @@
     </Rules>
   </Validation>
   <Views>
-    <ListView Id="AdminOrderGrouping_ListView_All" ClassName="Exercise2Solution.Module.BusinessObjects.Orders" EditorTypeName="DevExpress.ExpressApp.Web.Editors.ASPx.ASPxGridListEditor" IsNewNode="True">
+    <ListView Id="AdminOrderGrouping_ListView_All" ClassName="Exercise2Solution.Module.BusinessObjects.Orders" EditorTypeName="DevExpress.ExpressApp.Web.Editors.ASPx.ASPxGridListEditor" DataAccessMode="Server" IsNewNode="True">
       <Columns IsNewNode="True">
         <ColumnInfo Id="CreatedBy" PropertyName="CreatedBy" Index="0" Width="400" SortIndex="0" SortOrder="Ascending" IsNewNode="True" />
         <ColumnInfo Id="Order" PropertyName="Order" Index="1" Width="70" IsNewNode="True" />
@@ -76,7 +80,7 @@
       </Variants>
     </ListView>
     <DetailView Id="Department_DetailView" AllowEdit="True" />
-    <ListView Id="Department_ListView" AllowEdit="False" AllowLink="False" AllowUnlink="False" MasterDetailMode="ListViewOnly" />
+    <ListView Id="Department_ListView" AllowEdit="False" AllowLink="False" AllowUnlink="False" MasterDetailMode="ListViewOnly" DataAccessMode="Server" />
     <ListView Id="Department_LookupListView" AllowEdit="False" AllowLink="False" AllowNew="True" AllowUnlink="False" />
     <ListView Id="Department_Members_ListView" AllowNew="False" AllowEdit="False" AllowLink="True" />
     <DetailView Id="Meals_DetailView">
@@ -84,7 +88,7 @@
         <PropertyEditor Id="Price" DisplayFormat="{0:C}" />
       </Items>
     </DetailView>
-    <ListView Id="Meals_ListView" AllowLink="False" AllowUnlink="False">
+    <ListView Id="Meals_ListView" AllowLink="False" AllowUnlink="False" DataAccessMode="Server">
       <Columns>
         <ColumnInfo Id="Price" DisplayFormat="{0:C}" EditMask="" />
       </Columns>
@@ -97,7 +101,7 @@
         <PropertyEditor Id="VatPerUnit" AllowEdit="False" />
       </Items>
     </DetailView>
-    <ListView Id="OrderLines_ListView" AllowLink="False" AllowUnlink="False">
+    <ListView Id="OrderLines_ListView" AllowLink="False" AllowUnlink="False" DataAccessMode="Server">
       <Columns>
         <ColumnInfo Id="VatPerUnit" AllowEdit="False" />
         <ColumnInfo Id="UnitPrice" DisplayFormat="{0:C}" EditMask="" />
@@ -117,7 +121,7 @@
         <PropertyEditor Id="TotalVat" DisplayFormat="{0:C}" EditMask="" EditMaskType="Simple" />
       </Items>
     </DetailView>
-    <ListView Id="Orders_ListView" AllowLink="False" AllowUnlink="False">
+    <ListView Id="Orders_ListView" AllowLink="False" AllowUnlink="False" DataAccessMode="Client">
       <Columns>
         <ColumnInfo Id="Delivery" SortOrder="Descending" />
         <ColumnInfo Id="TotalExclVat" DisplayFormat="{0:C}" EditMask="" EditMaskType="Simple" />
@@ -131,8 +135,26 @@
         <Filter Id="Orders_ListView_Processed" Criteria="Status = 'Processed'" Caption="Processed" IsNewNode="True" />
       </Filters>
     </ListView>
+    <ListView Id="Orders_ListView_NotAdmin" ClassName="Exercise2Solution.Module.BusinessObjects.Orders" AllowLink="False" AllowUnlink="False" DataAccessMode="Client" IsNewNode="True">
+      <Columns IsNewNode="True">
+        <ColumnInfo Id="CreatedBy" PropertyName="CreatedBy" Width="400" SortIndex="0" SortOrder="Ascending" Index="0" IsNewNode="True" />
+        <ColumnInfo Id="Order" PropertyName="Order" Width="70" Index="1" SortOrder="Ascending" GroupIndex="0" IsNewNode="True" />
+        <ColumnInfo Id="Delivery" PropertyName="Delivery" Width="70" Index="2" SortOrder="Descending" SortIndex="1" IsNewNode="True" />
+        <ColumnInfo Id="Delivered" PropertyName="Delivered" Width="70" Index="3" IsNewNode="True" />
+        <ColumnInfo Id="Status" PropertyName="Status" Width="70" Index="4" IsNewNode="True" />
+        <ColumnInfo Id="TotalExclVat" PropertyName="TotalExclVat" Width="50" Index="5" EditMaskType="Simple" IsNewNode="True" />
+        <ColumnInfo Id="TotalVat" PropertyName="TotalVat" Width="50" Index="6" EditMaskType="Simple" IsNewNode="True" />
+        <ColumnInfo Id="TotalOrder" PropertyName="TotalOrder" Width="50" Index="7" EditMaskType="Simple" IsNewNode="True" />
+      </Columns>
+      <Filters IsNewNode="True">
+        <Filter Id="Orders_ListView_AllOrders" Caption="All Orders" IsNewNode="True" />
+        <Filter Id="Orders_ListView_Delivered" Criteria="Status = 'Delivered'" Caption="Delivered" IsNewNode="True" />
+        <Filter Id="Orders_ListView_OnOrder" Criteria="Status = 'OnOrder'" Caption="On Order" IsNewNode="True" />
+        <Filter Id="Orders_ListView_Processed" Criteria="Status = 'Processed'" Caption="Processed" IsNewNode="True" />
+      </Filters>
+    </ListView>
     <ListView Id="Orders_LookupListView" AllowLink="False" AllowUnlink="False" />
-    <ListView Id="Orders_OrderLine_ListView" AllowUnlink="False" AllowLink="False">
+    <ListView Id="Orders_OrderLine_ListView" AllowUnlink="False" AllowLink="False" DataAccessMode="Client">
       <Columns>
         <ColumnInfo Id="UnitPrice" DisplayFormat="{0:C}" EditMask="" EditMaskType="Simple" />
         <ColumnInfo Id="Amount" DisplayFormat="{0:C}" EditMask="" EditMaskType="Simple" />
@@ -144,14 +166,14 @@
         <PropertyEditor Id="EmailAddress" EditMask="[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}" EditMaskType="RegEx" />
       </Items>
     </DetailView>
-    <ListView Id="Profile_ListView" AllowLink="False" AllowUnlink="False">
+    <ListView Id="Profile_ListView" AllowLink="False" AllowUnlink="False" DataAccessMode="Server">
       <Columns>
         <ColumnInfo Id="Manager" Caption="Manager" DataSourceProperty="Department.Manager" PropertyName="Department.Manager" AllowEdit="False" IsNewNode="True" />
       </Columns>
     </ListView>
     <ListView Id="Profile_LookupListView" AllowUnlink="False" AllowLink="False" />
     <ListView Id="Profile_TelephoneNumbers_ListView" AllowLink="False" AllowUnlink="False" />
-    <ListView Id="Telephone_ListView" AllowLink="False" AllowUnlink="False" AllowEdit="True" MasterDetailMode="ListViewOnly" NewItemRowPosition="Top" InlineEditMode="Inline" EditorTypeName="">
+    <ListView Id="Telephone_ListView" AllowLink="False" AllowUnlink="False" AllowEdit="True" MasterDetailMode="ListViewOnly" NewItemRowPosition="Top" InlineEditMode="Inline" DataAccessMode="Server" EditorTypeName="">
       <Columns>
         <ColumnInfo Id="ExtNum" AllowEdit="True" />
       </Columns>
